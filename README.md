@@ -21,15 +21,22 @@ Requisitos imprescindibles del proyecto:
 - [ ] Implementa validación a la hora de crear un producto para que se rellene todos los campos y si no se hace que devuelva un mensaje
 - [ ] Solo podrás crear, actualizar y eliminar productos si estás autenticado.
 
+
+
   - Categorías
 - [ ] *CRUD Categorías*
 - [ ] El endpoint para ver todas las categorías junto a los productos que tienen
 - [ ] Crea un endpoint que devuelva una categoría por id
 - [ ] Filtro para buscar categoría por nombre
 
+
+
   - Pedidos
 - [ ] Crea un endpoint para ver los pedidos junto a los productos que tienen 
 - [ ] Crea un endpoint para crear pedidos
+
+
+
 
  - Usuarios
 - [ ] Endpoint para registrar un usuario utilizando bcrypt
@@ -37,6 +44,8 @@ Requisitos imprescindibles del proyecto:
 - [ ] Endpoint que nos traiga la información del usuario conectado junto a los pedidos que tiene y los productos que contiene cada pedido
 - [ ] Endpoint para el logout
 - [ ] Implementa validación a la hora de crear un usuario para que se rellene todos los campos y si no se hace que devuelva un mensaje
+
+
 
  - Seeders
 - [ ] Crea 5 productos con un seeder
