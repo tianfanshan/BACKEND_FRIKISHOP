@@ -11,7 +11,7 @@ Requisitos imprescindibles del proyecto:
 - [ ] Presentación de README excelente.
 
 ## 1.1.Endpoints
-  - Productos
+  - _Productos_
 - [ ] *CRUD productos*
 - [ ] El endpoint de traer productos debe mostrarse junto a la categoría o categorías que pertenece
 - [ ] Endpoint que traiga un producto por su id
@@ -23,7 +23,7 @@ Requisitos imprescindibles del proyecto:
 
 
 
-  - Categorías
+  - _Categorías_
 - [ ] *CRUD Categorías*
 - [ ] El endpoint para ver todas las categorías junto a los productos que tienen
 - [ ] Crea un endpoint que devuelva una categoría por id
@@ -31,14 +31,14 @@ Requisitos imprescindibles del proyecto:
 
 
 
-  - Pedidos
+  - _Pedidos_
 - [ ] Crea un endpoint para ver los pedidos junto a los productos que tienen 
 - [ ] Crea un endpoint para crear pedidos
 
 
 
 
- - Usuarios
+ - _Usuarios_
 - [ ] Endpoint para registrar un usuario utilizando bcrypt
 - [ ] Endpoint para login(utilizando bcrypt +JWT)
 - [ ] Endpoint que nos traiga la información del usuario conectado junto a los pedidos que tiene y los productos que contiene cada pedido
@@ -47,7 +47,7 @@ Requisitos imprescindibles del proyecto:
 
 
 
- - Seeders
+ - _Seeders_
 - [ ] Crea 5 productos con un seeder
 
 ## 1.2. Extra		
