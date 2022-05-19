@@ -1,23 +1,23 @@
 {
     "development": {
-        "username": "root",
-        "password": 123456,
-        "database": "database_frikishop",
-        "host": "127.0.0.1",
+        "username": "Your user",
+        "password": "Your pass",
+        "database": "Your db",
+        "host": "Your host",
         "dialect": "mysql"
     },
     "test": {
-        "username": "root",
-        "password": null,
-        "database": "database_test",
-        "host": "127.0.0.1",
+        "username": "Your user",
+        "password": "Your pass",
+        "database": "Your db",
+        "host": "Your host",
         "dialect": "mysql"
     },
     "production": {
-        "username": "root",
-        "password": null,
-        "database": "database_production",
-        "host": "127.0.0.1",
+        "username": "Your user",
+        "password": "Your pass",
+        "database": "Your db",
+        "host": "Your host",
         "dialect": "mysql"
     }
 }
