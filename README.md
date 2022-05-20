@@ -38,8 +38,13 @@ Requisitos imprescindibles del proyecto:
 
 
 
+<<<<<<< HEAD
 - _Usuarios_
 - [ ] Endpoint para registrar un usuario utilizando bcrypt
+=======
+ - _Usuarios_
+- [/] Endpoint para registrar un usuario utilizando bcrypt
+>>>>>>> 6cd5b264e5a78890f913cfc04ad6bed7dbceaa5a
 - [ ] Endpoint para login(utilizando bcrypt +JWT)
 - [ ] Endpoint que nos traiga la información del usuario conectado junto a los pedidos que tiene y los productos que contiene cada pedido
 - [ ] Endpoint para el logout
