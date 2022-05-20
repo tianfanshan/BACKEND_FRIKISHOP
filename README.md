@@ -12,7 +12,7 @@ Requisitos imprescindibles del proyecto:
 
 ## 1.1.Endpoints
   - _Productos_
-- [ ] *CRUD productos*
+- [ ] CRUD productos
 - [ ] El endpoint de traer productos debe mostrarse junto a la categoría o categorías que pertenece
 - [ ] Endpoint que traiga un producto por su id
 - [ ] Filtro para buscar producto por nombre
@@ -23,22 +23,22 @@ Requisitos imprescindibles del proyecto:
 
 
 
-  - _Categorías_
-- [ ] *CRUD Categorías*
+- _Categorías_
+- [ ] CRUD Categorías
 - [ ] El endpoint para ver todas las categorías junto a los productos que tienen
 - [ ] Crea un endpoint que devuelva una categoría por id
 - [ ] Filtro para buscar categoría por nombre
 
 
 
-  - _Pedidos_
+- _Pedidos_
 - [ ] Crea un endpoint para ver los pedidos junto a los productos que tienen 
 - [ ] Crea un endpoint para crear pedidos
 
 
 
 
- - _Usuarios_
+- _Usuarios_
 - [ ] Endpoint para registrar un usuario utilizando bcrypt
 - [ ] Endpoint para login(utilizando bcrypt +JWT)
 - [ ] Endpoint que nos traiga la información del usuario conectado junto a los pedidos que tiene y los productos que contiene cada pedido
