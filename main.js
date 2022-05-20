@@ -7,6 +7,8 @@ app.use(express.json());
 
 app.use('/users', require('./routes/users'));
 app.use('/sets', require('./routes/sets'));
-app.use('/categories', require('./routes/categories'))
+app.use('/categories', require('./routes/categories'));
+app.use('/orders', require('./routes/orders'));
+
 
 app.listen(port, () => console.log(`Servidor levantado sobre el puerto ${port}`))
