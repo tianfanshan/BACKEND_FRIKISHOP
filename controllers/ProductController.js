@@ -1,4 +1,4 @@
-const { Product, Categorie } = require('../models/index.js')
+const { Product, Categorie, Review } = require('../models/index.js')
 
 const ProductController = {
     async create(req, res) {
@@ -33,7 +33,23 @@ const ProductController = {
             }
         })
         res.send('Product actualizado con éxito');
-    }
+    },
+    async delete(req, res) {
+        await Product.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        await Review.destroy({
+            where: {
+                ProductId: req.params.id
+            }
+        })
+        res.send(
+            'El usuario ha sido eliminado con éxito'
+        )
+    },
+
 }
 
 module.exports = ProductController
