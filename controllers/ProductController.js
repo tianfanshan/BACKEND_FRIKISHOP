@@ -80,6 +80,23 @@ const ProductController = {
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
 
+    },
+    async filterByPrice(req, res) {
+        try {
+            res.send(await Product.findOne({
+                limit: 200,
+                where: {
+                    price: {
+                        [Op.gte]: [`${+req.params.min}`],
+                        [Op.lte]: [`${+req.params.max}`],
+                    }
+                },
+                include: [Categorie]
+            }))
+        } catch (error) {
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
+        }
     }
 }
 
