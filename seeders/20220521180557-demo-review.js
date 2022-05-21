@@ -7,7 +7,7 @@ module.exports = {
             "body": "Cuerpo de la reviewwwwwwwwwwwwwww ",
             "score": 3,
             "UserId": 1,
-            "ProductId": 2,
+            "ProductId": 4,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
@@ -23,7 +23,7 @@ module.exports = {
             "body": "Cuerpo de la reviewwwwwwwwwwwwwww ",
             "score": 9,
             "UserId": 3,
-            "ProductId": 6,
+            "ProductId": 3,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
@@ -31,7 +31,7 @@ module.exports = {
             "body": "Cuerpo de la reviewwwwwwwwwwwwwww ",
             "score": 9,
             "UserId": 4,
-            "ProductId": 8,
+            "ProductId": 1,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
@@ -39,7 +39,7 @@ module.exports = {
             "body": "Cuerpo de la reviewwwwwwwwwwwwwww ",
             "score": 10,
             "UserId": 2,
-            "ProductId": 7,
+            "ProductId": 1,
             createdAt: new Date(),
             updatedAt: new Date()
         }])

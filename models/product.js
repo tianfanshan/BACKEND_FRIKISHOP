@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
             Product.belongsTo(models.Categorie)
             Product.belongsTo(models.Set)
             Product.hasMany(models.Review)
+            Product.belongsToMany(models.Order, { through: models.ProductOrders });
+
         }
     }
     Product.init({
