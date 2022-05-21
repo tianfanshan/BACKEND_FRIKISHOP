@@ -1,4 +1,4 @@
-const { Review, Product } = require('../models/index.js')
+const { Review, User, Product, Categorie } = require('../models/index.js')
 
 const ReviewController = {
     async create(req, res) {
@@ -13,10 +13,31 @@ const ReviewController = {
     async findAll(req, res) {
         try {
             res.send(
-                await Review.findAll({ include: [Product] })
+                await Review.findAll({ include: [User] })
             )
         } catch (error) {
 
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
+        }
+    },
+    async findAllProduct(req, res) {
+        try {
+            res.send(
+                await Product.findAll({ include: [Categorie, Review] })
+            )
+        } catch (error) {
+
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
+        }
+    },
+    async getById(req, res) {
+        try {
+            res.send(
+                await Product.findByPk(req.params.id, { include: [Categorie, Review] })
+            )
+        } catch (error) {
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
