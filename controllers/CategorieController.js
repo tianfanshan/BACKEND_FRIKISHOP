@@ -22,6 +22,16 @@ const CategorieController = {
             res.send('Algo ha salido mal...')
         }
     },
+    async deleteById(req, res) {
+        try {
+            await Categorie.destroy({
+                where: { id: req.params.id }
+            })
+            res.send(`Se ha borrado la categoria con id: ${req.params.id}`)
+        } catch (error) {
+            res.send('Algo ha salido mal...')
+        }
+    },
     async getAll(req, res) {
         try {
             res.send(

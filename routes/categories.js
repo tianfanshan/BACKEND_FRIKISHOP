@@ -7,5 +7,6 @@ router.get('/', CategorieController.getAll)
 router.get('/id/:id', CategorieController.getById)
 router.get('/search/:name', CategorieController.getByName)
 router.put('/id/:id', CategorieController.update)
+router.delete('/id/:id', CategorieController.deleteById)
 
 module.exports = router;

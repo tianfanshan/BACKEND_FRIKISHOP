@@ -24,7 +24,7 @@ Requisitos imprescindibles del proyecto:
 
 
   - _Categorías_
-- [ ] *CRUD Categorías*
+- [X] *CRUD Categorías*
 - [X] El endpoint para ver todas las categorías junto a los productos que tienen
 - [X] Crea un endpoint que devuelva una categoría por id
 - [X] Filtro para buscar categoría por nombre
