@@ -97,7 +97,19 @@ const ProductController = {
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
+    },
+    async orderPrice(req, res) {
+        try {
+            res.send(
+                await Product.findAll({ order: [
+                        ['price', 'DESC']
+                    ] }, { include: [Categorie] })
+            )
+        } catch (error) {
+
+        }
     }
+
 }
 
 module.exports = ProductController
