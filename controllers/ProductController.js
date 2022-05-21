@@ -1,9 +1,9 @@
-const { Product, Categorie, Review } = require('../models/index.js')
+const { Product, Categorie, Review, Sequelize } = require('../models/index.js')
+const { Op } = Sequelize;
 
 const ProductController = {
     async create(req, res) {
         try {
-
             await Product.create({...req.body })
             res.status(201).send('Se ha añadido correctamente')
         } catch (error) {
@@ -12,19 +12,15 @@ const ProductController = {
         }
     },
     async findAll(req, res) {
-
         try {
             res.send(
                 await Product.findAll({ include: [Categorie] })
             )
-
-
         } catch (error) {
 
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
-
     },
     async update(req, res) {
         try {
@@ -52,7 +48,7 @@ const ProductController = {
                     ProductId: req.params.id
                 }
             })
-            res.send('El usuario ha sido eliminado con éxito')
+            res.send('El producto junto con su review ha sido eliminado con éxito')
         } catch (error) {
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
@@ -68,6 +64,22 @@ const ProductController = {
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
+    },
+    async getOneByName(req, res) {
+        try {
+            res.send(await Product.findOne({
+                where: {
+                    name: {
+                        [Op.like]: `%${req.params.name}%`
+                    }
+                },
+                include: [Categorie]
+            }))
+        } catch (error) {
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
+        }
+
     }
 }
 
