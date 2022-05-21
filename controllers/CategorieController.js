@@ -1,4 +1,4 @@
-const { Categorie } = require('../models/index.js')
+const { Categorie, Product } = require('../models/index.js')
 
 const CategorieController = {
     async create(req, res) {
@@ -10,7 +10,16 @@ const CategorieController = {
             console.log(error);
             res.send('Algo ha salido mal...')
         }
+    },
+    async getAll(req, res) {
+        try {
+            res.send(
+                await Categorie.findAll({ include: [Product] })
+            )
+        } catch (error) {
+            console.log(error);
+            res.send('Algo ha salido mal')
+        }
     }
 }
-
 module.exports = CategorieController
