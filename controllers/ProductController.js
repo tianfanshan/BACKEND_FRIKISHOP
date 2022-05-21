@@ -27,29 +27,48 @@ const ProductController = {
 
     },
     async update(req, res) {
-        await Product.update({...req.body }, {
-            where: {
-                id: req.params.id
-            }
-        })
-        res.send('Product actualizado con éxito');
+        try {
+            await Product.update({...req.body }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            res.send('Product actualizado con éxito');
+        } catch (error) {
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
+        }
+
     },
     async delete(req, res) {
-        await Product.destroy({
-            where: {
-                id: req.params.id
-            }
-        })
-        await Review.destroy({
-            where: {
-                ProductId: req.params.id
-            }
-        })
-        res.send(
-            'El usuario ha sido eliminado con éxito'
-        )
-    },
+        try {
+            await Product.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+            await Review.destroy({
+                where: {
+                    ProductId: req.params.id
+                }
+            })
+            res.send('El usuario ha sido eliminado con éxito')
+        } catch (error) {
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
+        }
 
+    },
+    async getById(req, res) {
+        try {
+            res.send(
+                await Product.findByPk(req.params.id, { include: [Categorie] })
+            )
+        } catch (error) {
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
+        }
+    }
 }
 
 module.exports = ProductController
