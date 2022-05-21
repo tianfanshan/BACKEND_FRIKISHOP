@@ -32,8 +32,8 @@ Requisitos imprescindibles del proyecto:
 
 
   - _Pedidos_
-- [ ] Crea un endpoint para ver los pedidos junto a los productos que tienen 
-- [ ] Crea un endpoint para crear pedidos
+- [X] Crea un endpoint para ver los pedidos junto a los productos que tienen 
+- [X] Crea un endpoint para crear pedidos
 
 
 
@@ -54,7 +54,7 @@ Requisitos imprescindibles del proyecto:
 - [ ] Implementación de roles:
     - Crear un rol Admin y que solo los usuarios con ese rol puedan crear, actualizar y eliminar productos.
 - [ ] Investiga que es el middleware multer e implementalo para poder adjuntar imágenes al crear o actualizar productos.
-- [ ] Reviews
+- [X] Reviews
     - CRUD reviews
     - El endpoint de traer reviews debe mostrarlas junto al usuario que hizo esa review
     - Actualizar el endpoint de traer todos productos y que ahora muestre los productos junto a sus categorías y sus reviews
