@@ -12,12 +12,12 @@ Requisitos imprescindibles del proyecto:
 
 ## 1.1.Endpoints
   - _Productos_
-- [ ] *CRUD productos*
-- [ ] El endpoint de traer productos debe mostrarse junto a la categoría o categorías que pertenece
-- [ ] Endpoint que traiga un producto por su id
-- [ ] Filtro para buscar producto por nombre
-- [ ] Filtro para buscar producto por precio
-- [ ] Filtro que ordene los productos de mayor a menor precio
+- [X] *CRUD productos*
+- [X] El endpoint de traer productos debe mostrarse junto a la categoría o categorías que pertenece
+- [X] Endpoint que traiga un producto por su id
+- [X] Filtro para buscar producto por nombre
+- [/] Filtro para buscar producto por precio
+- [X] Filtro que ordene los productos de mayor a menor precio
 - [ ] Implementa validación a la hora de crear un producto para que se rellene todos los campos y si no se hace que devuelva un mensaje
 - [ ] Solo podrás crear, actualizar y eliminar productos si estás autenticado.
 
@@ -48,7 +48,7 @@ Requisitos imprescindibles del proyecto:
 
 
  - _Seeders_
-- [ ] Crea 5 productos con un seeder
+- [X] Crea 5 productos con un seeder
 
 ## 1.2. Extra		
 - [ ] Implementación de roles:

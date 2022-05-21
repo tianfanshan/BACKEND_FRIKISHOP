@@ -29,7 +29,7 @@ const ProductController = {
                     id: req.params.id
                 }
             })
-            res.send('Product actualizado con éxito');
+            res.send(`Producto con id ${req.params.id} actualizado con éxito`);
         } catch (error) {
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
@@ -48,7 +48,7 @@ const ProductController = {
                     ProductId: req.params.id
                 }
             })
-            res.send('El producto junto con su review ha sido eliminado con éxito')
+            res.send(`El producto con id ${req.params.id} junto con su review ha sido eliminado con éxito`)
         } catch (error) {
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
@@ -101,12 +101,15 @@ const ProductController = {
     async orderPrice(req, res) {
         try {
             res.send(
-                await Product.findAll({ order: [
+                await Product.findAll({
+                    order: [
                         ['price', 'DESC']
-                    ] }, { include: [Categorie] })
+                    ]
+                }, { include: [Categorie] })
             )
         } catch (error) {
-
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
         }
     }
 
