@@ -24,7 +24,7 @@ const ReviewController = {
     async findAllProduct(req, res) {
         try {
             res.send(
-                await Product.findAll({ include: [Categorie, Review] })
+                await Product.findAll({ include: { all: true, nested: true } })
             )
         } catch (error) {
 
@@ -35,11 +35,11 @@ const ReviewController = {
     async getById(req, res) {
         try {
             res.send(
-                await Product.findByPk(req.params.id, { include: [Categorie, Review] })
+                await Product.findByPk(req.params.id, { include: { all: true, nested: true } })
             )
         } catch (error) {
             console.log(error)
-            res.status(500).send({ message: 'Ha habido un problema ' })
+            res.status(500).send({ message: 'Ha habido un problema' })
         }
     },
     async update(req, res) {
