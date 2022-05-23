@@ -24,7 +24,7 @@ const ReviewController = {
     async findAllProduct(req, res) {
         try {
             res.send(
-                await Product.findAll({ include: { all: true, nested: true } })
+                await Product.findAll({ include: [Categorie, Review] })
             )
         } catch (error) {
 
