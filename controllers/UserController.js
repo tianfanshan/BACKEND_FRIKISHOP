@@ -16,7 +16,7 @@ const UserController = {
             res.status(201).send({ message: 'Se ha creado un usuario', user })
         } catch (error) {
             console.log(error);
-            res.send('Algo ha salido mal...')
+            res.send(`El email ${req.body.email} introducido ya está en uso.`)
         }
     },
     async findAll(req, res) {
@@ -58,7 +58,8 @@ const UserController = {
                     id: req.params.id
                 }
             })
-            res.send({ message: `Usuario con id ${req.params.id} actualizado con éxito`, user });
+            const userUpdated = await User.findByPk(req.params.id)
+            res.send({ message: `Usuario con id ${req.params.id} actualizado con éxito`, userUpdated });
         } catch (error) {
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
@@ -74,12 +75,12 @@ const UserController = {
             })
             await Order.destroy({
                 where: {
-                    ProductId: req.params.id
+                    id: req.params.id
                 }
             })
             await Review.destroy({
                 where: {
-                    ProductId: req.params.id
+                    id: req.params.id
                 }
             })
 
@@ -116,10 +117,7 @@ const UserController = {
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
-    },
-
-
-
+    }
 }
 
 module.exports = UserController

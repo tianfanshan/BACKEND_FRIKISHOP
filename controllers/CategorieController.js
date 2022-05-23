@@ -1,10 +1,11 @@
 const { Categorie, Product, Sequelize } = require('../models/index.js')
 const { Op } = Sequelize;
+
 const CategorieController = {
     async create(req, res) {
         try {
             await Categorie.create({...req.body })
-            res.status(201).send('Se ha añadido correctamente')
+            res.status(201).send(`Se ha añadido ${req.body.name} a categorias`)
         } catch (error) {
             console.log(error);
             res.send('Algo ha salido mal...')
@@ -17,13 +18,18 @@ const CategorieController = {
                     id: req.params.id
                 }
             })
-            res.send('oki')
+            const updatedCategorie = await Categorie.findByPk(req.params.id)
+            res.send({ message: `Se ha modificado la categoria ${req.params.id}`, updatedCategorie })
         } catch (error) {
             res.send('Algo ha salido mal...')
         }
     },
     async deleteById(req, res) {
         try {
+            const categorie = await Categorie.findByPk(req.params.id)
+            if (!categorie) {
+                return res.send(`La categoria con id ${req.params.id} no existe`)
+            }
             await Categorie.destroy({
                 where: { id: req.params.id }
             })
@@ -45,7 +51,7 @@ const CategorieController = {
     async getById(req, res) {
         try {
             res.send(
-                await Categorie.findByPk(req.params.id)
+                await Categorie.findByPk(req.params.id, { include: [Product] })
             )
         } catch (error) {
             console.log(error);
@@ -69,4 +75,5 @@ const CategorieController = {
         }
     }
 }
+
 module.exports = CategorieController

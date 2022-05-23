@@ -4,8 +4,8 @@ const { Op } = Sequelize;
 const ProductController = {
     async create(req, res) {
         try {
-            await Product.create({...req.body })
-            res.status(201).send('Se ha añadido correctamente')
+            const newProduct = await Product.create({...req.body })
+            res.status(201).send({ message: 'Se ha añadido el producto correctamente', newProduct })
         } catch (error) {
             console.log(error);
             res.send('Algo ha salido mal...')
@@ -29,7 +29,8 @@ const ProductController = {
                     id: req.params.id
                 }
             })
-            res.send(`Producto con id ${req.params.id} actualizado con éxito`);
+            const productUpdated = await Product.findByPk(req.params.id);
+            res.send({ message: `Producto con id ${req.params.id} actualizado con éxito`, productUpdated });
         } catch (error) {
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
@@ -67,7 +68,7 @@ const ProductController = {
     },
     async getOneByName(req, res) {
         try {
-            res.send(await Product.findOne({
+            res.send(await Product.findAll({
                 where: {
                     name: {
                         [Op.like]: `%${req.params.name}%`
@@ -83,7 +84,7 @@ const ProductController = {
     },
     async filterByPrice(req, res) {
         try {
-            res.send(await Product.findOne({
+            res.send(await Product.findAll({
                 limit: 200,
                 where: {
                     price: {

@@ -1,9 +1,10 @@
-const { Review, User, Product, Categorie } = require('../models/index.js')
+const { Review, User, Product, Categorie, Sequelize } = require('../models/index.js');
+const { Op } = Sequelize
 
 const ReviewController = {
     async create(req, res) {
         try {
-            await Review.create({...req.body })
+            await Review.create({...req.body, UserId: req.user.id })
             res.status(201).send('Se ha añadido correctamente')
         } catch (error) {
             console.log(error);
@@ -44,9 +45,24 @@ const ReviewController = {
     },
     async update(req, res) {
         try {
-            await Review.update({...req.body }, {
+            const review = await Review.findAll({...req.body, UserId: req.user.id }, {
                 where: {
-                    id: req.params.id
+                    [Op.and]: [
+                        { id: req.params.id },
+                        { UserId: req.user.id }
+                    ]
+                }
+            })
+            console.log(review);
+            if (!review) {
+                return res.send('No tienes permiso para modificar esa review')
+            }
+            await Review.update({...req.body, UserId: req.user.id }, {
+                where: {
+                    [Op.and]: [
+                        { id: req.params.id },
+                        { UserId: req.user.id }
+                    ]
                 }
             })
             res.send(`Review con id ${req.params.id} actualizado con éxito`);
