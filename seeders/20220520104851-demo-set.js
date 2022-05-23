@@ -3,30 +3,42 @@
 module.exports = {
     async up(queryInterface, Sequelize) {
         return queryInterface.bulkInsert('Sets', [{
-                name: 'Set1',
+                name: 'Set Valorant',
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
             {
-                name: 'Set2',
-                createdAt: new Date(),
-                updatedAt: new Date()
-
-            },
-            {
-                name: 'Set3',
+                name: 'Set God of War',
                 createdAt: new Date(),
                 updatedAt: new Date()
 
             },
             {
-                name: 'Set4',
+                name: 'Set Assassins Creed',
                 createdAt: new Date(),
                 updatedAt: new Date()
 
             },
             {
-                name: 'Set5',
+                name: 'Set Attack on titan',
+                createdAt: new Date(),
+                updatedAt: new Date()
+
+            },
+            {
+                name: 'Set Mario Bros',
+                createdAt: new Date(),
+                updatedAt: new Date()
+
+            },
+            {
+                name: 'Set Señor de los Anillos',
+                createdAt: new Date(),
+                updatedAt: new Date()
+
+            },
+            {
+                name: 'Set Dragon Ball',
                 createdAt: new Date(),
                 updatedAt: new Date()
 

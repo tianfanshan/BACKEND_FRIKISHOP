@@ -29,6 +29,30 @@ module.exports = {
                 role: 'user',
                 createdAt: new Date(),
                 updatedAt: new Date()
+            }, {
+                username: 'El pescatero',
+                email: "pescatero@gmail.com",
+                password: bcrypt.hashSync("PescaoFresco", 10),
+                adress: 'Calle de detrás',
+                role: 'user',
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }, {
+                username: 'La panadera',
+                email: "pan@gmail.com",
+                password: bcrypt.hashSync("TodoCrujiente", 10),
+                adress: 'Calle principal',
+                role: 'user',
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }, {
+                username: 'Hijo de panadera',
+                email: "hijopanes@gmail.com",
+                password: bcrypt.hashSync("MiMamaNoMeQuiere", 10),
+                adress: 'Sin calle',
+                role: 'user',
+                createdAt: new Date(),
+                updatedAt: new Date()
             },
             {
                 username: 'El Perro',

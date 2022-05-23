@@ -3,8 +3,8 @@
 module.exports = {
     async up(queryInterface, Sequelize) {
         return queryInterface.bulkInsert('Products', [{
-            "name": "product1",
-            "description": "description product1",
+            "name": "Figura Kratos",
+            "description": "Una maravillosa figura de Kratos en su última aventura en las tierras nórdicas",
             "price": 10,
             "stock": 2495,
             "CategorieId": 1,
@@ -12,39 +12,75 @@ module.exports = {
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
-            "name": "product2",
-            "description": "description product2",
+            "name": "Emoji Valorant",
+            "description": "Chapita de Valorant para que la lleves siempre contigo",
             "price": 5.6,
             "stock": 295,
+            "CategorieId": 5,
+            "SetId": 1,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }, {
+            "name": "Edward",
+            "description": "Una taza que se calienta y muestra a nuestro pirata de AC ",
+            "price": 15.43,
+            "stock": 25,
             "CategorieId": 2,
             "SetId": 3,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
-            "name": "product3",
-            "description": "description product3",
-            "price": 29.43,
+            "name": "Ezio Auditore",
+            "description": "Una fantástica camiseta de AC para que luzcas esta primavera",
+            "price": 25.43,
             "stock": 25,
             "CategorieId": 3,
             "SetId": 2,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
-            "name": "product4",
-            "description": "description product4",
-            "price": 1.65,
-            "stock": 3049,
-            "CategorieId": 4,
-            "SetId": 1,
+            "name": "Levi Ackerman",
+            "description": "Figurita del mejor lider del equipo de exploración en Shingeki no Kyojin",
+            "price": 35.43,
+            "stock": 25,
+            "CategorieId": 1,
+            "SetId": 4,
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
-            "name": "product5",
-            "description": "description product5",
-            "price": 37.65,
+            "name": "Mario y Luigi",
+            "description": "El dúo dinámico preparado para su próximo juego",
+            "price": 16.5,
+            "stock": 3049,
+            "CategorieId": 1,
+            "SetId": 5,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }, {
+            "name": "Vegeta",
+            "description": "Vegeta super saiyajin 3",
+            "price": 27.5,
+            "stock": 3049,
+            "CategorieId": 1,
+            "SetId": 7,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }, {
+            "name": "Aragorn",
+            "description": "Aragorn conquistando las tierras medias",
+            "price": 17.65,
             "stock": 23495,
             "CategorieId": 4,
-            "SetId": 2,
+            "SetId": 6,
+            createdAt: new Date(),
+            updatedAt: new Date()
+        }, {
+            "name": "Goku y sus amigos",
+            "description": "Todo el team de dragon ball listo para pelear contigo",
+            "price": 3.6,
+            "stock": 295,
+            "CategorieId": 4,
+            "SetId": 7,
             createdAt: new Date(),
             updatedAt: new Date()
         }])
