@@ -9,6 +9,8 @@ router.get('/login', UserController.login)
 router.put('/id/:id', authentication, UserController.update)
 router.delete('/id/:id', authentication, UserController.delete)
 router.get('/', UserController.findAll)
+router.delete('/logout', authentication, UserController.logout)
+router.get('/currentTokens', UserController.currentTokens)
 
 
 

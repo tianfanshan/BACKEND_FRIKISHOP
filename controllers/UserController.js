@@ -1,5 +1,6 @@
-const { User, Token, Review, Order, Product } = require('../models/index.js');
+const { User, Token, Review, Order, Product, Sequelize } = require('../models/index.js');
 const bcrypt = require('bcryptjs');
+const { Op } = Sequelize
 const jwt = require('jsonwebtoken');
 const { jwt_secret } = require('../config/config.json')['development']
 
@@ -88,7 +89,37 @@ const UserController = {
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
 
-    }
+    },
+    async logout(req, res) {
+        try {
+            await Token.destroy({
+                where: {
+                    [Op.and]: [
+                        { UserId: req.user.id },
+                        { token: req.headers.authorization }
+                    ]
+                }
+            });
+            res.send({ message: 'Desconectado con éxito' })
+        } catch (error) {
+            console.log(error)
+            res.status(500).send({ message: 'hubo un problema al tratar de desconectarte' })
+        }
+    },
+    async currentTokens(req, res) {
+        try {
+            res.send(
+                await Token.findAll({ include: User })
+            )
+        } catch (error) {
+
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
+        }
+    },
+
+
+
 }
 
 module.exports = UserController
