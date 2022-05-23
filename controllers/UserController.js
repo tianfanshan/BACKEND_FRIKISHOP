@@ -1,7 +1,6 @@
-const { User, Token } = require('../models/index.js');
+const { User, Token, Review, Order } = require('../models/index.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { use } = require('express/lib/application');
 const { jwt_secret } = require('../config/config.json')['development']
 
 const UserController = {
@@ -39,6 +38,45 @@ const UserController = {
         } catch (error) {
             console.log(error);
         }
+    },
+    async update(req, res) {
+        try {
+            const user = await User.update({...req.body }, {
+                where: {
+                    id: req.params.id
+                }
+            })
+            res.send({ message: `Usuario con id ${req.params.id} actualizado con éxito`, user });
+        } catch (error) {
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
+        }
+
+    },
+    async delete(req, res) {
+        try {
+            await User.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+            await Order.destroy({
+                where: {
+                    ProductId: req.params.id
+                }
+            })
+            await Review.destroy({
+                where: {
+                    ProductId: req.params.id
+                }
+            })
+
+            res.send(`El usuario con id ${req.params.id} (junto con su order y su review) ha sido eliminado con éxito`)
+        } catch (error) {
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
+        }
+
     }
 }
 
