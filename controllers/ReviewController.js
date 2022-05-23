@@ -36,7 +36,7 @@ const ReviewController = {
     async getById(req, res) {
         try {
             res.send(
-                await Product.findByPk(req.params.id, { include: { all: true, nested: true } })
+                await Product.findByPk(req.params.id, { include: [Categorie, Review] })
             )
         } catch (error) {
             console.log(error)
