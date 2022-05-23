@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             User.hasMany(models.Order)
             User.hasMany(models.Review)
+            User.hasMany(models.Token)
         }
     }
     User.init({

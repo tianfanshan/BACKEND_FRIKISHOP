@@ -4,7 +4,8 @@
         "password": "Your pass",
         "database": "Your db",
         "host": "Your host",
-        "dialect": "mysql"
+        "dialect": "mysql",
+        "jwt_secret": "YourJWTPass"
     },
     "test": {
         "username": "Your user",

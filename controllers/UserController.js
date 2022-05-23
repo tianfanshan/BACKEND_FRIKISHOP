@@ -1,5 +1,8 @@
-const { User } = require('../models/index.js');
+const { User, Token } = require('../models/index.js');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { use } = require('express/lib/application');
+const { jwt_secret } = require('../config/config.json')['development']
 
 const UserController = {
     async create(req, res) {
@@ -30,7 +33,9 @@ const UserController = {
             if (!isMatch) {
                 res.send('Email/contraseña incorrectos')
             }
-            res.send({ message: 'Eres un crack, fiera, mastodonte', user })
+            const token = jwt.sign({ id: user.id }, jwt_secret);
+            Token.create({ token: token, UserId: user.id })
+            res.send({ message: 'Eres un crack, fiera, mastodonte', user, token })
         } catch (error) {
             console.log(error);
         }
