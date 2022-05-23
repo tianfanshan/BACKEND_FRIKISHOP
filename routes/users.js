@@ -8,6 +8,7 @@ router.post('/', UserController.create)
 router.get('/login', UserController.login)
 router.put('/id/:id', authentication, UserController.update)
 router.delete('/id/:id', authentication, UserController.delete)
+router.get('/', UserController.findAll)
 
 
 

@@ -1,4 +1,4 @@
-const { User, Token, Review, Order } = require('../models/index.js');
+const { User, Token, Review, Order, Product } = require('../models/index.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { jwt_secret } = require('../config/config.json')['development']
@@ -16,6 +16,17 @@ const UserController = {
         } catch (error) {
             console.log(error);
             res.send('Algo ha salido mal...')
+        }
+    },
+    async findAll(req, res) {
+        try {
+            res.send(
+                await User.findAll({ include: [{ model: Order, include: [{ model: Product }] }] })
+            )
+        } catch (error) {
+
+            console.log(error)
+            res.status(500).send({ message: 'Ha habido un problema ' })
         }
     },
     async login(req, res) {
