@@ -1,13 +1,13 @@
 # PROJECT_BACKEND
 
-- [ ] Registro de usuarios usando Bcrypt.
-- [ ] Login de usuarios + token + middleware.
-- [ ] Que sea capaz de crear un CRUD.
-- [ ] Al menos una relación Many to Many y otra One to Many.
-- [ ] Utilización de seeders
+- [X] Registro de usuarios usando Bcrypt.
+- [X] Login de usuarios + token + middleware.
+- [X] Que sea capaz de crear un CRUD.
+- [X] Al menos una relación Many to Many y otra One to Many.
+- [X] Utilización de seeders
 
 Requisitos imprescindibles del proyecto:
-- [ ] Uso de ramas con git, cuando se termine el proyecto deberán quedar dos ramas la master o main y la develop.
+- [X] Uso de ramas con git, cuando se termine el proyecto deberán quedar dos ramas la master o main y la develop.
 - [ ] Presentación de README excelente.
 
 ## 1.1.Endpoints
@@ -19,7 +19,7 @@ Requisitos imprescindibles del proyecto:
 - [/] Filtro para buscar producto por precio
 - [X] Filtro que ordene los productos de mayor a menor precio
 - [ ] Implementa validación a la hora de crear un producto para que se rellene todos los campos y si no se hace que devuelva un mensaje
-- [ ] Solo podrás crear, actualizar y eliminar productos si estás autenticado.
+- [X] Solo podrás crear, actualizar y eliminar productos si estás autenticado.
 
 
 
@@ -42,7 +42,7 @@ Requisitos imprescindibles del proyecto:
 - [X] Endpoint para registrar un usuario utilizando bcrypt
 - [X] Endpoint para login(utilizando bcrypt +JWT)
 - [X] Endpoint que nos traiga la información del usuario conectado junto a los pedidos que tiene y los productos que contiene cada pedido
-- [ ] Endpoint para el logout
+- [X] Endpoint para el logout
 - [/] Implementa validación a la hora de crear un usuario para que se rellene todos los campos y si no se hace que devuelva un mensaje
 
 
@@ -51,7 +51,7 @@ Requisitos imprescindibles del proyecto:
 - [X] Crea 5 productos con un seeder
 
 ## 1.2. Extra		
-- [ ] Implementación de roles:
+- [X] Implementación de roles:
     - Crear un rol Admin y que solo los usuarios con ese rol puedan crear, actualizar y eliminar productos.
 - [ ] Investiga que es el middleware multer e implementalo para poder adjuntar imágenes al crear o actualizar productos.
 - [X] Reviews
