@@ -45,7 +45,7 @@ const ReviewController = {
     },
     async update(req, res) {
         try {
-            const review = await Review.findAll({...req.body, UserId: req.user.id }, {
+            const updateds = await Review.update({...req.body, UserId: req.user.id }, {
                 where: {
                     [Op.and]: [
                         { id: req.params.id },
@@ -53,24 +53,11 @@ const ReviewController = {
                     ]
                 }
             })
-            console.log(review);
-            if (!review) {
-                return res.send('No tienes permiso para modificar esa review')
-            }
-            await Review.update({...req.body, UserId: req.user.id }, {
-                where: {
-                    [Op.and]: [
-                        { id: req.params.id },
-                        { UserId: req.user.id }
-                    ]
-                }
-            })
-            res.send(`Review con id ${req.params.id} actualizado con éxito`);
+            res.send({ message: `Se han modificado:`, updateds })
         } catch (error) {
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
-
     },
     async delete(req, res) {
         try {
