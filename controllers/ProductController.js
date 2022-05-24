@@ -1,10 +1,11 @@
 const { Product, Categorie, Review, Sequelize } = require('../models/index.js')
 const { Op } = Sequelize;
 
+
 const ProductController = {
     async create(req, res) {
         try {
-            const newProduct = await Product.create({...req.body })
+            const newProduct = await Product.create({...req.body, img: req.file.filename })
             res.status(201).send({ message: 'Se ha añadido el producto correctamente', newProduct })
         } catch (error) {
             console.log(error);
