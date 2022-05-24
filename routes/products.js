@@ -3,8 +3,24 @@ const ProductController = require('../controllers/ProductController');
 const router = express.Router();
 const { authentication, isAdmin } = require('../middelware/authentication')
 
+const multer = require('multer')
 
-router.post('/', authentication, isAdmin, ProductController.create)
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads')
+    },
+    filename: function(req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname)
+    }
+})
+
+const upload = multer({ storage })
+
+
+
+
+router.post('/', authentication, isAdmin, upload.single('upload'), ProductController.create)
 router.get('/', ProductController.findAll)
 router.put('/id/:id', authentication, isAdmin, ProductController.update)
 router.delete('/id/:id', authentication, isAdmin, ProductController.delete)
