@@ -6,6 +6,7 @@ const { authentication, isAdmin } = require('../middelware/authentication')
 
 router.post('/', authentication, OrderController.create)
 router.get('/', authentication, isAdmin, OrderController.getAll)
-    //* Endpoint para añadir productos a la cesta
+router.get('/id/:id', authentication, isAdmin, OrderController.getById)
+
 
 module.exports = router;
