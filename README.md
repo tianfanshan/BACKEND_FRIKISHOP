@@ -107,11 +107,276 @@ Requisitos imprescindibles del proyecto:
 
 # Documentacion de API
 
-## Usuarios
+# Usuarios
 
----
+## Registrarse
 
-<h5 style="background-color:#ffb400;display:inline-flex; padding:1px 4px;border-radius:5px;color:white;font-weight:700" >GET</h5><h3 style="display:inline; margin-left: 15px">Registrarse</h3>
+**(Publico) POST** - `http://localhost:8080/users/` 
 
-`http://localhost:8080/users/`
+Endopoint que sirve para introducir un usuario en la BBDD, automaticamente se le asigna el rol de usuario, la contraseña se guarda codificada para que no sea accesible y el usuario queda pendiente de confirmacion via mail. Este procedimiento anida diversas verificaciones para que se introduzcan datos correctos. Los parametros de entrada son via Body.
 
+Body:
+```JSON
+{
+    "username": "Usuario",
+    "password": "Contraseña",
+    "email": "direccion@dominio.com",
+    "adress": "Tu direccion"
+}
+```
+
+Respuesta:
+```JSON
+{
+    "message": "Se ha creado un usuario",
+    "user": {
+        "id": 27,
+        "username": "Usuario",
+        "password": "$2a$10$974eQv5GkVrOgR/uSPWux.0enpx31EihQBJiNz79y7q18VWVl8IiC",
+        "email": "direccion@dominio.com",
+        "adress": "Tu direccion",
+        "role": "user",
+        "confirmed": false,
+        "updatedAt": "2022-05-25T20:23:27.251Z",
+        "createdAt": "2022-05-25T20:23:27.251Z"
+    }
+}
+```
+
+-------------------------------
+
+## Inicio de sesión
+
+**(Registrado) GET** - `http://localhost:8080/users/login` 
+
+Endpoint que sirve para iniciar sesión, esto genera un token de sesión, las credenciales se introducen via Body.
+
+Body:
+```JSON
+{
+    "email": "ElJefeInfiltrado@gmail.com",
+    "password": "ElFuckingGuau"
+}
+```
+
+Respuesta:
+```JSON
+{
+    "message": "Eres un crack, fiera, mastodonte",
+    "user": {
+        "id": 7,
+        "username": "El Perro",
+        "email": "ElJefeInfiltrado@gmail.com",
+        "password": "$2a$10$qOvg/S8Xbk97/X33UxXyq.orbnzLZdtyHwJybC8.dbtz1i8z.xFSm",
+        "adress": "En el cesped de calle molona",
+        "role": "SuperAdmin",
+        "confirmed": true,
+        "createdAt": "2022-05-25T13:31:25.000Z",
+        "updatedAt": "2022-05-25T13:31:25.000Z"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjUzNTExMDc0fQ.HtM8iUFxyAOPw1FFv75M5jP_ZScHOeZ7SfJZxcxy7B0"
+}
+```
+
+------------------------
+
+
+
+
+<!-- REVISAR -->
+
+## Cerrar sesión
+
+## ¡¡¡DA ERROR!!!
+
+
+
+
+
+
+----------------------
+
+<!-- REVISAR -->
+
+## Modificar datos de usuario
+
+**(Registrado) PUT** - `http://localhost:8080/users/id/:id`
+
+Endpoint que sirve para para modificar los datos de usuarios, para su funcionamiento es necesario que se le pase en el body los datos a modificar y en el header el token activo
+
+Body:
+```JSON
+{
+    "username": "NewUsername"
+}
+```
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Resultado:
+
+```JSON
+{
+    "message": "Usuario con id 2 actualizado con éxito",
+    "userUpdated": {
+        "id": 2,
+        "username": "Juliana",
+        "email": "Maria@gmail.com",
+        "password": "$2a$10$hHWBihs6AC6ogIPX9nCZp..II4pLdnZmEDzGL/adz3JUwO4y6bCge",
+        "adress": "Calle Molona 85",
+        "role": "user",
+        "confirmed": true,
+        "createdAt": "2022-05-25T13:31:25.000Z",
+        "updatedAt": "2022-05-25T21:10:29.000Z"
+    }
+}
+```
+-------------------------------
+
+## Obtener todos los usuarios con sus pedidos
+
+**(Admin) GET** - `http://localhost:8080/users/`
+
+Endpoint con el que se obtiene a todos los usuarios con sus pedidos, solo es necesario un token en el header con rol de Admin
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Respuesta:
+
+```JSON
+[
+    {
+        "id": 1,
+        "username": "Paquito Molina",
+        "email": "Paqito@gmail.com",
+        "password": "$2a$10$EF0vS7yxuG.xAzE6uMSIfuJKbc9gR6pRoKgnMKxI04nG15fJQ0IOS",
+        "adress": "Calle Molona 69",
+        "role": "user",
+        "confirmed": true,
+        "createdAt": "2022-05-25T13:31:25.000Z",
+        "updatedAt": "2022-05-25T13:31:25.000Z",
+        "Orders": [
+            {
+                "id": 1,
+                "paid": false,
+                "UserId": 1,
+                "createdAt": "2022-05-25T13:31:25.000Z",
+                "updatedAt": "2022-05-25T13:31:25.000Z",
+                "Products": [
+                    {
+                        "id": 7,
+                        "name": "Vegeta",
+                        "description": "Vegeta super saiyajin 3",
+                        "price": 27.5,
+                        "stock": 3049,
+                        "CategorieId": 1,
+                        "SetId": 7,
+                        "img": "07-choni-de-mercadillo.jpg",
+                        "createdAt": "2022-05-25T13:31:25.000Z",
+                        "updatedAt": "2022-05-25T13:31:25.000Z",
+                        "ProductOrders": {
+                            "amount": 5,
+                            "ProductId": 7,
+                            "OrderId": 1,
+                            "createdAt": "2022-05-25T13:31:25.000Z",
+                            "updatedAt": "2022-05-25T13:31:25.000Z"
+                        }
+                    },
+                    {
+                        "id": 8,
+                        "name": "Aragorn",
+                        "description": "Aragorn conquistando las tierras medias",
+                        "price": 17.65,
+                        "stock": 23495,
+                        "CategorieId": 4,
+                        "SetId": 6,
+                        "img": "08-coletas-medieval.jpg",
+                        "createdAt": "2022-05-25T13:31:25.000Z",
+                        "updatedAt": "2022-05-25T13:31:25.000Z",
+                        "ProductOrders": {
+                            "amount": 1,
+                            "ProductId": 8,
+                            "OrderId": 1,
+                            "createdAt": "2022-05-25T13:31:25.000Z",
+                            "updatedAt": "2022-05-25T13:31:25.000Z"
+                        }
+                    }
+                ]
+            }
+        ]
+    },{
+      ...
+      ...
+      ...
+    }
+]
+```
+
+--------------------------
+
+## Obtener todas las sesiones iniciadas
+
+**(Admin) GET** - `http://localhost:8080/users/currentTokens`
+
+Endpoint que devuelve todos los usuarios conectados junto a sus tokens, solo es necesario poner en el header un token con rol de Admin.
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Respuesta:
+```JSON
+[
+    {
+        "id": 1,
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjUzNTExMDc0fQ.HtM8iUFxyAOPw1FFv75M5jP_ZScHOeZ7SfJZxcxy7B0",
+        "UserId": 7,
+        "createdAt": "2022-05-25T20:37:54.000Z",
+        "updatedAt": "2022-05-25T20:37:54.000Z",
+        "User": {
+            "id": 7,
+            "username": "El Perro",
+            "email": "ElJefeInfiltrado@gmail.com",
+            "password": "$2a$10$qOvg/S8Xbk97/X33UxXyq.orbnzLZdtyHwJybC8.dbtz1i8z.xFSm",
+            "adress": "En el cesped de calle molona",
+            "role": "SuperAdmin",
+            "confirmed": true,
+            "createdAt": "2022-05-25T13:31:25.000Z",
+            "updatedAt": "2022-05-25T13:31:25.000Z"
+        }
+    },{
+      ...
+      ...
+      ...
+    }
+]
+```
+
+--------------------
+
+**(Admin) DELETE** - `http://localhost:8080/users/id/:id`
+
+Endpoint que sirve para eliminar a un usuario por su id, es necesario disponer de un token de admin y adjuntarlo en el head. Tambien se eliminan sus reviews y pedidos.
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Resultado:
+```JSON
+El usuario con id 2 (junto con su order y su review) ha sido eliminado con éxito
+```
+
+-----------------------
