@@ -10,5 +10,6 @@ router.delete('/id/:id', authentication, isAdmin, UserController.delete)
 router.get('/', authentication, isAdmin, UserController.findAll)
 router.delete('/logout', authentication, UserController.logout)
 router.get('/currentTokens', authentication, isAdmin, UserController.currentTokens)
+router.get('/confirm/:token', UserController.validateUser)
 
 module.exports = router;

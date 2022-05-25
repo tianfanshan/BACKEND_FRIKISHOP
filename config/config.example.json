@@ -5,7 +5,11 @@
         "database": "Your db",
         "host": "Your host",
         "dialect": "mysql",
-        "jwt_secret": "YourJWTPass"
+        "jwt_secret": "YourJWTPass",
+        "auth": {
+            "user": "yourMail@gmail.com",
+            "pass": "YourPass"
+        }
     },
     "test": {
         "username": "Your user",
