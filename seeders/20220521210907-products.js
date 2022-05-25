@@ -9,15 +9,17 @@ module.exports = {
             "stock": 2495,
             "CategorieId": 1,
             "SetId": 2,
+            "img": "01-leñador-empotrador.jpg",
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
-            "name": "Emoji Valorant",
-            "description": "Chapita de Valorant para que la lleves siempre contigo",
+            "name": "Torreta de Killjoy",
+            "description": "Torreta en tamaño real, dispara, te va a quitar el MVP",
             "price": 5.6,
             "stock": 295,
-            "CategorieId": 5,
+            "CategorieId": 1,
             "SetId": 1,
+            "img": "02-torretmvp.jpg",
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
@@ -27,6 +29,7 @@ module.exports = {
             "stock": 25,
             "CategorieId": 2,
             "SetId": 3,
+            "img": "03-pirata-empotrador.jpg",
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
@@ -36,6 +39,7 @@ module.exports = {
             "stock": 25,
             "CategorieId": 3,
             "SetId": 2,
+            "img": "04-elezio.jpeg",
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
@@ -45,6 +49,7 @@ module.exports = {
             "stock": 25,
             "CategorieId": 1,
             "SetId": 4,
+            "img": "05-cazatitanes.jpg",
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
@@ -54,6 +59,7 @@ module.exports = {
             "stock": 3049,
             "CategorieId": 1,
             "SetId": 5,
+            "img": "06-fontaneros-para-todo-uwu.jpg",
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
@@ -63,6 +69,7 @@ module.exports = {
             "stock": 3049,
             "CategorieId": 1,
             "SetId": 7,
+            "img": "07-choni-de-mercadillo.jpg",
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
@@ -72,6 +79,7 @@ module.exports = {
             "stock": 23495,
             "CategorieId": 4,
             "SetId": 6,
+            "img": "08-coletas-medieval.jpg",
             createdAt: new Date(),
             updatedAt: new Date()
         }, {
@@ -81,6 +89,7 @@ module.exports = {
             "stock": 295,
             "CategorieId": 4,
             "SetId": 7,
+            "img": "09-mucha-gente.jpg",
             createdAt: new Date(),
             updatedAt: new Date()
         }])
