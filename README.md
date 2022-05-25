@@ -103,3 +103,15 @@ Requisitos imprescindibles del proyecto:
 - En el tintero
 
 - Autores
+
+
+# Documentacion de API
+
+## Usuarios
+
+---
+
+<h5 style="background-color:#ffb400;display:inline-flex; padding:1px 4px;border-radius:5px;color:white;font-weight:700" >GET</h5><h3 style="display:inline; margin-left: 15px">Registrarse</h3>
+
+`http://localhost:8080/users/`
+
