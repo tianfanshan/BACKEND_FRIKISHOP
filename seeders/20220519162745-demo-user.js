@@ -9,6 +9,7 @@ module.exports = {
                 password: bcrypt.hashSync("PacoGamer", 10),
                 adress: 'Calle Molona 69',
                 role: 'user',
+                confirmed: true,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -18,6 +19,7 @@ module.exports = {
                 password: bcrypt.hashSync("LahMari", 10),
                 adress: 'Calle No Molona 85',
                 role: 'user',
+                confirmed: true,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -27,6 +29,7 @@ module.exports = {
                 password: bcrypt.hashSync("MiMamaNoMeQuiereMiPapaTampocoElPerroTampoco", 10),
                 adress: 'Calle de enmedio',
                 role: 'user',
+                confirmed: true,
                 createdAt: new Date(),
                 updatedAt: new Date()
             }, {
@@ -35,6 +38,7 @@ module.exports = {
                 password: bcrypt.hashSync("PescaoFresco", 10),
                 adress: 'Calle de detrás',
                 role: 'user',
+                confirmed: true,
                 createdAt: new Date(),
                 updatedAt: new Date()
             }, {
@@ -43,6 +47,7 @@ module.exports = {
                 password: bcrypt.hashSync("TodoCrujiente", 10),
                 adress: 'Calle principal',
                 role: 'user',
+                confirmed: true,
                 createdAt: new Date(),
                 updatedAt: new Date()
             }, {
@@ -51,6 +56,7 @@ module.exports = {
                 password: bcrypt.hashSync("MiMamaNoMeQuiere", 10),
                 adress: 'Sin calle',
                 role: 'user',
+                confirmed: true,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -60,6 +66,7 @@ module.exports = {
                 password: bcrypt.hashSync("ElFuckingGuau", 10),
                 adress: 'En el cesped de calle molona',
                 role: 'SuperAdmin',
+                confirmed: true,
                 createdAt: new Date(),
                 updatedAt: new Date()
             }

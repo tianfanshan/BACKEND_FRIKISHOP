@@ -1,6 +1,7 @@
 'use strict';
 const {
-    Model
+    Model,
+    TINYINT
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class User extends Model {
@@ -43,7 +44,8 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         adress: DataTypes.STRING,
-        role: DataTypes.STRING
+        role: DataTypes.STRING,
+        confirmed: DataTypes.BOOLEAN
     }, {
         sequelize,
         modelName: 'User',

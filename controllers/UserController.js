@@ -8,6 +8,7 @@ const UserController = {
     async create(req, res, next) {
         try {
             req.body.role = "user" //TODO hay que modificar el diagrama
+            req.body.confirmed = false
             const hashedPassword = bcrypt.hashSync(req.body.password, 10)
             const user = await User.create({...req.body, password: hashedPassword });
             res.status(201).send({ message: 'Se ha creado un usuario', user })
