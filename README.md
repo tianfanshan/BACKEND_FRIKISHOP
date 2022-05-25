@@ -78,9 +78,9 @@ Requisitos imprescindibles del proyecto:
 
     - Concepto e inspiración
 
-- Documentacion de API
+- [Documentacion de API](#documentacion-de-api)
 
-    - Usuarios
+    - [Usuarios](#usuarios)
 
     - Pedidos
 
