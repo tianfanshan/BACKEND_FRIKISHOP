@@ -1,4 +1,5 @@
 const express = require('express');
+const { typeError } = require('./middelware/errors');
 const app = express();
 const port = 8080;
 
@@ -12,6 +13,6 @@ app.use('/orders', require('./routes/orders'));
 app.use('/products', require('./routes/products'));
 app.use('/reviews', require('./routes/reviews'));
 
-
+app.use(typeError)
 
 app.listen(port, () => console.log(`Servidor levantado sobre el puerto ${port}`))

@@ -5,18 +5,15 @@ const jwt = require('jsonwebtoken');
 const { jwt_secret } = require('../config/config.json')['development']
 
 const UserController = {
-    async create(req, res) {
+    async create(req, res, next) {
         try {
             req.body.role = "user" //TODO hay que modificar el diagrama
-            if (!req.body.email || !req.body.password || !req.body.adress || !req.body.username) {
-                return res.send('Rellene todos los campos')
-            }
             const hashedPassword = bcrypt.hashSync(req.body.password, 10)
             const user = await User.create({...req.body, password: hashedPassword });
             res.status(201).send({ message: 'Se ha creado un usuario', user })
         } catch (error) {
-            console.log(error);
-            res.send(`El email ${req.body.email} introducido ya está en uso.`)
+            error.origin = "User";
+            next(error)
         }
     },
     async findAll(req, res) {
