@@ -66,7 +66,7 @@ const CategorieController = {
                         name: {
                             [Op.like]: `%${req.params.name}%`
                         }
-                    }
+                    },
                 })
             )
         } catch (error) {

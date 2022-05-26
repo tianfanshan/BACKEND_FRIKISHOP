@@ -398,8 +398,6 @@ El usuario con id 2 (junto con su order y su review) ha sido eliminado con éxit
 
 # Pedidos
 
-<<<<<<< HEAD
-=======
 ## Crear un pedido
 
 **(Registrado) POST** - `http://localhost:8080/orders`
@@ -554,7 +552,6 @@ Respuesta:
 ```
 
 # Productos
->>>>>>> develop
 
 ## Crear
 **(Admin) POST** - `http://localhost:8080/products` 
@@ -876,8 +873,296 @@ Respuesta:
 ```
 
 -------------------------------
-# Categorias
+## Modificar producto
+**(Admin) POST** - `http://localhost:8080/products/id/3` 
+Aquí además, en la ruta debemos añadir:
+`````
+upload.single('upload'), 
+`````
+Esto nos permite usar el midleware Multer para poder adjuntar una imagen con cada producto. Este endpoint que sirve para modificar un producto, es necesario disponer de un token de admin y adjuntarlo en el head. Al usar Multer, es necesario poner la información dentro del Body, pero en form-data:
 
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Body:
+| KEY | VALUE |
+| --- | --- |
+| CategorieId | 3 |
+| SetId | 6 |
+| name | cambiado |
+| description | cambiado descripcion |
+| price| 19.99 |
+| stock| 2 |
+| upload| 03-pirata-empotrador.jpg |
+
+
+
+Respuesta:
+```JSON
+{
+    "message": "Producto con id 3 actualizado con éxito",
+    "productUpdated": {
+        "id": 3,
+        "name": "cambiado",
+        "description": "cambiado description",
+        "price": 19.99,
+        "stock": 2,
+        "CategorieId": 3,
+        "SetId": 6,
+        "img": "1653571031796-03-pirata-empotrador.jpg",
+        "createdAt": "2022-05-25T14:53:01.000Z",
+        "updatedAt": "2022-05-26T13:17:11.000Z"
+    }
+}
+```
+--------------------------------
+# Categorias
+## Crear
+**(Admin) POST** - `http://localhost:8080/categories` 
+
+Este endpoint nos permite crear diferentes categorías, siempre que tengas el rango de autorización requerido.
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+
+
+Respuesta:
+```
+Se ha añadido batas a categorias
+```
+--------------------------------
+## Mostrar todos las categorías
+**(Público) GET** - `http://localhost:8080/categories`
+Este endpoint te permite, de manera pública, acceder a todas las categorías de la base de datos. Además te trae los productos que pertenecen a esa categoría, con sus correspondientes datos.
+
+Respuesta:
+
+```JSON
+[
+    {
+        "id": 1,
+        "name": "Figuras",
+        "createdAt": "2022-05-25T14:53:00.000Z",
+        "updatedAt": "2022-05-25T14:53:00.000Z",
+        "Products": [
+            {
+                "id": 10,
+                "name": "gagaa",
+                "description": "Un juego de dos maravillosos aguacates únicos",
+                "price": 1.5,
+                "stock": 30,
+                "CategorieId": 1,
+                "SetId": 2,
+                "img": "1653564364859-06-fontaneros-para-todo-uwu.jpg",
+                "createdAt": "2022-05-26T11:26:04.000Z",
+                "updatedAt": "2022-05-26T11:26:04.000Z"
+            },
+            {
+                "id": 7,
+                "name": "Vegeta",
+                "description": "Vegeta super saiyajin 3",
+                "price": 27.5,
+                "stock": 3049,
+                "CategorieId": 1,
+                "SetId": 7,
+                "img": "07-choni-de-mercadillo.jpg",
+                "createdAt": "2022-05-25T14:53:01.000Z",
+                "updatedAt": "2022-05-25T14:53:01.000Z"
+            },
+            {
+                "id": 6,
+                "name": "Mario y Luigi",
+                "description": "El dúo dinámico preparado para su próximo juego",
+                "price": 16.5,
+                "stock": 3049,
+                "CategorieId": 1,
+                "SetId": 5,
+                "img": "06-fontaneros-para-todo-uwu.jpg",
+                "createdAt": "2022-05-25T14:53:01.000Z",
+                "updatedAt": "2022-05-25T14:53:01.000Z"
+            },
+            {
+                "id": 5,
+                "name": "Levi Ackerman",
+                "description": "Figurita del mejor lider del equipo de exploración en Shingeki no Kyojin",
+                "price": 35.43,
+                "stock": 25,
+                "CategorieId": 1,
+                "SetId": 4,
+                "img": "05-cazatitanes.jpg",
+                "createdAt": "2022-05-25T14:53:01.000Z",
+                "updatedAt": "2022-05-25T14:53:01.000Z"
+            },
+            {
+                "id": 1,
+                "name": "Figura Kratos",
+                "description": "Una maravillosa figura de Kratos en su última aventura en las tierras nórdicas",
+                "price": 10,
+                "stock": 2495,
+                "CategorieId": 1,
+                "SetId": 2,
+                "img": "01-leñador-empotrador.jpg",
+                "createdAt": "2022-05-25T14:53:01.000Z",
+                "updatedAt": "2022-05-25T14:53:01.000Z"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Tazas",
+        "createdAt": "2022-05-25T14:53:00.000Z",
+        "updatedAt": "2022-05-25T14:53:00.000Z",
+        "Products": []
+    },
+    {
+        "id": 3,
+        "name": "Camisetas",
+        "createdAt": "2022-05-25T14:53:00.000Z",
+        "updatedAt": "2022-05-25T14:53:00.000Z",
+        "Products": [
+            {
+                "id": 4,
+                "name": "Ezio Auditore",
+                "description": "Una fantástica camiseta de AC para que luzcas esta primavera",
+                "price": 25.43,
+                "stock": 25,
+                "CategorieId": 3,
+                "SetId": 2,
+                "img": "04-elezio.jpeg",
+                "createdAt": "2022-05-25T14:53:01.000Z",
+                "updatedAt": "2022-05-25T14:53:01.000Z"
+            },
+      ...
+      ...
+      ...
+    }
+]
+```
+----------------------
+## Mostrar categoría por id
+**(Público) GET** - `http://localhost:8080/categories/id/4`
+Este endpoint te permite, de manera pública, acceder a la categoría filtrando previamente por su Id. Además te trae los productos que pertenecen a esa categoría, con sus correspondientes datos.
+
+Respuesta:
+
+```JSON
+{
+    "id": 4,
+    "name": "Posters",
+    "createdAt": "2022-05-25T14:53:00.000Z",
+    "updatedAt": "2022-05-25T14:53:00.000Z",
+    "Products": [
+        {
+            "id": 8,
+            "name": "Aragorn",
+            "description": "Aragorn conquistando las tierras medias",
+            "price": 17.65,
+            "stock": 23495,
+            "CategorieId": 4,
+            "SetId": 6,
+            "img": "08-coletas-medieval.jpg",
+            "createdAt": "2022-05-25T14:53:01.000Z",
+            "updatedAt": "2022-05-25T14:53:01.000Z"
+        },
+        {
+            "id": 9,
+            "name": "Goku y sus amigos",
+            "description": "Todo el team de dragon ball listo para pelear contigo",
+            "price": 3.6,
+            "stock": 295,
+            "CategorieId": 4,
+            "SetId": 7,
+            "img": "09-mucha-gente.jpg",
+            "createdAt": "2022-05-25T14:53:01.000Z",
+            "updatedAt": "2022-05-25T14:53:01.000Z"
+        }
+    ]
+}
+```
+---------------------------
+## Filtrar categoría por nombre
+**(Público) GET** - `http://localhost:8080/categories/search/pos`
+Este endpoint te permite, de manera pública, acceder a la categoría filtrando previamente por su nombre. 
+
+Respuesta:
+
+```JSON
+[
+    {
+        "id": 4,
+        "name": "Posters",
+        "createdAt": "2022-05-25T14:53:00.000Z",
+        "updatedAt": "2022-05-25T14:53:00.000Z"
+    }
+]
+```
+----------------------
+## Modificar categoria
+**(Admin) POST** - `http://localhost:8080/categories/id/2` 
+
+ Este endpoint que sirve para modificar una categoría, es necesario disponer de un token de admin y adjuntarlo en el head. 
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Body:
+````
+{
+    "name": "Accion"
+}
+````
+Respuesta:
+```JSON
+{
+    "message": "Se ha modificado la categoria 2",
+    "updatedCategorie": {
+        "id": 2,
+        "name": "Accion",
+        "createdAt": "2022-05-25T14:53:00.000Z",
+        "updatedAt": "2022-05-26T13:19:20.000Z"
+    }
+}
+```
+-------------------
+## Borrar categoria
+**(Admin) DELETE** - `http://localhost:8080/categories/id/2` 
+
+Endpoint para borrar categoría por Id. Necesitas tener permisos, por lo que debes rellenar el header con lo siguiente:
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Body:
+```| KEY | VALUE |
+| --- | --- |
+| CategorieId | 3 |
+| SetId | 6 |
+| name | cambiado |
+| description | cambiado description |
+| price| 19.99 |
+| stock| 2 |
+| upload| 03-pirata-empotrador.jpg |
+
+```
+
+Respuesta:
+```JSON
+Se ha borrado la categoria con id: 2
+```
+---------------
 # Sets
 
 # Opiniones
