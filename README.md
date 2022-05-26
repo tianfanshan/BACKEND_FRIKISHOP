@@ -91,6 +91,7 @@ Seguidamente, dentro de la carpeta config, debes crearte un archivo llamado "con
 - Bcrypt
 - Jsonwebtoken
 - Multer
+- Postman
 
 ## Origen
 Es un proyecto de backend de la academia The Brigde para asentar conocimientos en todo el terreno de base de datos mysql conjuntamente con Node+Express y Sequelize. Ha consistido en desarrollar una tienda que, en nuestro caso, posee una temática friki, de forma que tenemos tanto Categorías fisicas por un lado, como Sets dentro de esas categorías pertenecientes a diversos videojuegos, animes, etc.
@@ -101,6 +102,8 @@ Además de la utilización de estas tecnologías, hemos trabajo en equipo median
 
 Este es el diagrama que hemos confeccionado para realizar nuestra base de datos de la tienda:
 ![foto](/toReadme/schema_png.png)
+
+ 
 ## Objetivos
 
 
@@ -171,7 +174,7 @@ Requisitos imprescindibles del proyecto:
 La idea inicial de este proyecto surge cuando dos par de frikis se juntan para realizar un backend. Cada uno de nosotros, uno enamorado de Valorant y otro amante de los animes, vimos claro que nuestro proyecto de backend debía pertenecer a nuestro campo. De ahí surgió la estructura inicial de nuestra tienda friki, en la que podremos encontrar cosas que nos apasionan a ambos.
 
 # Documentacion de API
-
+Hemos utilizado Postman para ir probando cada uno de los endpoints creados para diversas funciones.
 # Usuarios
 
 ## Registrarse
