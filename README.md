@@ -832,11 +832,7 @@ Respuesta:
 
 **(Admin) DELETE** - `http://localhost:8080/products/id/2` 
 
-Aquí además, en la ruta debemos añadir:
-`````
-upload.single('upload'), 
-`````
-Esto nos permite usar el midleware Multer para poder adjuntar una imagen con cada producto, al igual que en Crear. Este endpoint, que sirve para actualizar un producto existente, necesita disponer de un token de admin y adjuntarlo en el head. Al usar Multer, es necesario poner la información dentro del Body, pero en form-data:
+Endpoint que sirve para borrar un determinado producto. Para ello, se necesitan los permisos de administrador:
 
 Header:
 
@@ -844,36 +840,11 @@ Header:
 | --- | --- |
 | authorization | Token |
 
-Body:
-```| KEY | VALUE |
-| --- | --- |
-| CategorieId | 3 |
-| SetId | 6 |
-| name | cambiado |
-| description | cambiado description |
-| price| 19.99 |
-| stock| 2 |
-| upload| 03-pirata-empotrador.jpg |
 
-```
 
 Respuesta:
 ```JSON
-{
-    "message": "Producto con id 3 actualizado con éxito",
-    "productUpdated": {
-        "id": 3,
-        "name": "cambiado",
-        "description": "cambiado description",
-        "price": 19.99,
-        "stock": 2,
-        "CategorieId": 3,
-        "SetId": 6,
-        "img": "1653566248315-03-pirata-empotrador.jpg",
-        "createdAt": "2022-05-25T14:53:01.000Z",
-        "updatedAt": "2022-05-26T11:57:28.000Z"
-    }
-}
+El producto con id 2 junto con su review ha sido eliminado con éxito
 ```
 
 -------------------------------
