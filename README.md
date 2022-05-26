@@ -63,7 +63,7 @@ npm install sequelize-cli -g
 ````
 
 Seguidamente, dentro de la carpeta config, debes crearte un archivo llamado "config.json" con la siguiente información:
-`````
+```JSON
 {
     "development": {
         "username": "Your user", // Aquí introducir tu usuario de mysql 
@@ -79,7 +79,17 @@ Seguidamente, dentro de la carpeta config, debes crearte un archivo llamado "con
     },
     ...
 }
-``````
+```
+
+Una vez configurada la base de datos hay que crearla con sus seeds (Relleno de prueba), para ellos ejecuta las siguientes lineas de comandos en la raiz del proyecto:
+
+```
+sequelize db:create
+
+sequelize db:migrate
+
+sequelize db:seed:all
+```
 
 ## :nut_and_bolt: Tecnologias/packages utilizados 
 - Javascript
