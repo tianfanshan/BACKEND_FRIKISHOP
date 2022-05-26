@@ -25,7 +25,7 @@ const ProductController = {
     },
     async update(req, res) {
         try {
-            await Product.update({...req.body }, {
+            await Product.update({...req.body, img: req.file.filename }, {
                 where: {
                     id: req.params.id
                 }

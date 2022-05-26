@@ -398,8 +398,324 @@ El usuario con id 2 (junto con su order y su review) ha sido eliminado con éxit
 
 # Pedidos
 
-# Productos
 
+## Crear
+**(Admin) POST** - `http://localhost:8080/products` 
+Aquí además, en la ruta debemos añadir:
+`````
+upload.single('upload'), 
+`````
+Esto nos permite usar el midleware Multer para poder adjuntar una imagen con cada producto. Este endpoint que sirve para crear un producto nuevo, es necesario disponer de un token de admin y adjuntarlo en el head. Al usar Multer, es necesario poner la información dentro del Body, pero en form-data:
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Body:
+```| KEY | VALUE |
+| --- | --- |
+| CategorieId | 1 |
+| SetId | 2 |
+| name | Gagaa |
+| description | Un juego de dos maravillosos aguacates únicos |
+| price| 1.5 |
+| stock| 30 |
+| upload| 03.jpg |
+
+```
+
+Respuesta:
+```JSON
+{
+    "message": "Se ha añadido el producto correctamente",
+    "newProduct": {
+        "id": 10,
+        "CategorieId": "1",
+        "SetId": "2",
+        "name": "gagaa",
+        "description": "Un juego de dos maravillosos aguacates únicos",
+        "price": "1.5",
+        "stock": "30",
+        "img": "1653564364859-06-fontaneros-para-todo-uwu.jpg",
+        "updatedAt": "2022-05-26T11:26:04.916Z",
+        "createdAt": "2022-05-26T11:26:04.916Z"
+    }
+}
+```
+--------------------------------
+## Mostrar todos los productos
+**(Público) GET** - `http://localhost:8080/products`
+Este endpoint te permite, de manera pública, acceder a los productos junto con su categoría y el set al que pertenecen.
+
+Respuesta:
+
+```JSON
+[
+    {
+        "id": 1,
+        "name": "Figura Kratos",
+        "description": "Una maravillosa figura de Kratos en su última aventura en las tierras nórdicas",
+        "price": 10,
+        "stock": 2495,
+        "CategorieId": 1,
+        "SetId": 2,
+        "img": "01-leñador-empotrador.jpg",
+        "createdAt": "2022-05-25T14:53:01.000Z",
+        "updatedAt": "2022-05-25T14:53:01.000Z",
+        "Categorie": {
+            "id": 1,
+            "name": "Figuras",
+            "createdAt": "2022-05-25T14:53:00.000Z",
+            "updatedAt": "2022-05-25T14:53:00.000Z"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Torreta de Killjoy",
+        "description": "Torreta en tamaño real, dispara, te va a quitar el MVP",
+        "price": 5.6,
+        "stock": 295,
+        "CategorieId": 1,
+        "SetId": 1,
+        "img": "02-torretmvp.jpg",
+        "createdAt": "2022-05-25T14:53:01.000Z",
+        "updatedAt": "2022-05-25T14:53:01.000Z",
+        "Categorie": {
+            "id": 1,
+            "name": "Figuras",
+            "createdAt": "2022-05-25T14:53:00.000Z",
+            "updatedAt": "2022-05-25T14:53:00.000Z"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Edward",
+        "description": "Una taza que se calienta y muestra a nuestro pirata de AC ",
+        "price": 15.43,
+        "stock": 25,
+        "CategorieId": 2,
+        "SetId": 3,
+        "img": "03-pirata-empotrador.jpg",
+        "createdAt": "2022-05-25T14:53:01.000Z",
+        "updatedAt": "2022-05-25T14:53:01.000Z",
+        "Categorie": {
+            "id": 2,
+            "name": "Tazas",
+            "createdAt": "2022-05-25T14:53:00.000Z",
+            "updatedAt": "2022-05-25T14:53:00.000Z"
+        }
+    },{
+      ...
+      ...
+      ...
+    }
+]
+```
+
+-------------------------------
+# Filtrar producto por nombre
+**(Público) GET** - `http://localhost:8080/products/name/ezi`
+Este endpoint te permite, de manera pública, acceder a los productos junto con su categoría y el set al que pertenecen filtrando por nombre asociado al producto.
+
+Respuesta:
+
+```JSON
+[
+    {
+        "id": 4,
+        "name": "Ezio Auditore",
+        "description": "Una fantástica camiseta de AC para que luzcas esta primavera",
+        "price": 25.43,
+        "stock": 25,
+        "CategorieId": 3,
+        "SetId": 2,
+        "img": "04-elezio.jpeg",
+        "createdAt": "2022-05-25T14:53:01.000Z",
+        "updatedAt": "2022-05-25T14:53:01.000Z",
+        "Categorie": {
+            "id": 3,
+            "name": "Camisetas",
+            "createdAt": "2022-05-25T14:53:00.000Z",
+            "updatedAt": "2022-05-25T14:53:00.000Z"
+        }
+    }
+]
+´´´´
+---------------------
+# Ordenar productos por precio
+**(Público) GET** - `http://localhost:8080/products/order`
+Este endpoint te permite, de manera pública, acceder a los productos junto con su categoría y el set al que pertenecen pero esta vez mostrará los productos ordenados de mayor a menor precio.
+
+Respuesta:
+
+```JSON
+[
+    {
+        "id": 5,
+        "name": "Levi Ackerman",
+        "description": "Figurita del mejor lider del equipo de exploración en Shingeki no Kyojin",
+        "price": 35.43,
+        "stock": 25,
+        "CategorieId": 1,
+        "SetId": 4,
+        "img": "05-cazatitanes.jpg",
+        "createdAt": "2022-05-25T14:53:01.000Z",
+        "updatedAt": "2022-05-25T14:53:01.000Z"
+    },
+    {
+        "id": 7,
+        "name": "Vegeta",
+        "description": "Vegeta super saiyajin 3",
+        "price": 27.5,
+        "stock": 3049,
+        "CategorieId": 1,
+        "SetId": 7,
+        "img": "07-choni-de-mercadillo.jpg",
+        "createdAt": "2022-05-25T14:53:01.000Z",
+        "updatedAt": "2022-05-25T14:53:01.000Z"
+    },
+    {
+        "id": 4,
+        "name": "Ezio Auditore",
+        "description": "Una fantástica camiseta de AC para que luzcas esta primavera",
+        "price": 25.43,
+        "stock": 25,
+        "CategorieId": 3,
+        "SetId": 2,
+        "img": "04-elezio.jpeg",
+        "createdAt": "2022-05-25T14:53:01.000Z",
+        "updatedAt": "2022-05-25T14:53:01.000Z"
+    },
+    { ...
+      ...
+      ...
+    }
+]
+```
+--------------------------
+# Filtrar productos entre un rango de precio determinado
+**(Público) GET** - `http://localhost:8080/products/filter/pricemin/1/pricemax/5`
+Este endpoint te permite, de manera pública, acceder a los productos junto con su categoría y el set al que pertenecen filtrados según un mínimo y máximo de precio que estipulas en la url.
+
+Respuesta:
+
+```JSON
+[
+    {
+        "id": 9,
+        "name": "Goku y sus amigos",
+        "description": "Todo el team de dragon ball listo para pelear contigo",
+        "price": 3.6,
+        "stock": 295,
+        "CategorieId": 4,
+        "SetId": 7,
+        "img": "09-mucha-gente.jpg",
+        "createdAt": "2022-05-25T14:53:01.000Z",
+        "updatedAt": "2022-05-25T14:53:01.000Z",
+        "Categorie": {
+            "id": 4,
+            "name": "Posters",
+            "createdAt": "2022-05-25T14:53:00.000Z",
+            "updatedAt": "2022-05-25T14:53:00.000Z"
+        }
+    },
+    {
+        "id": 10,
+        "name": "gagaa",
+        "description": "Un juego de dos maravillosos aguacates únicos",
+        "price": 1.5,
+        "stock": 30,
+        "CategorieId": 1,
+        "SetId": 2,
+        "img": "1653564364859-06-fontaneros-para-todo-uwu.jpg",
+        "createdAt": "2022-05-26T11:26:04.000Z",
+        "updatedAt": "2022-05-26T11:26:04.000Z",
+        "Categorie": {
+            "id": 1,
+            "name": "Figuras",
+            "createdAt": "2022-05-25T14:53:00.000Z",
+            "updatedAt": "2022-05-25T14:53:00.000Z"
+        }
+    }
+]
+```
+-------------------------
+# Ver producto por Id
+**(Público) GET** - `http://localhost:8080/products/id/1`
+Este endpoint te permite, de manera pública, acceder a al producto perteneciente a la Id con su categoría y el set al que pertenecen.
+
+Respuesta:
+
+```JSON
+{
+    "id": 1,
+    "name": "Figura Kratos",
+    "description": "Una maravillosa figura de Kratos en su última aventura en las tierras nórdicas",
+    "price": 10,
+    "stock": 2495,
+    "CategorieId": 1,
+    "SetId": 2,
+    "img": "01-leñador-empotrador.jpg",
+    "createdAt": "2022-05-25T14:53:01.000Z",
+    "updatedAt": "2022-05-25T14:53:01.000Z",
+    "Categorie": {
+        "id": 1,
+        "name": "Figuras",
+        "createdAt": "2022-05-25T14:53:00.000Z",
+        "updatedAt": "2022-05-25T14:53:00.000Z"
+    }
+}
+```
+-----------------------
+**(Admin) DELETE** - `http://localhost:8080/products/id/2` 
+
+Aquí además, en la ruta debemos añadir:
+`````
+upload.single('upload'), 
+`````
+Esto nos permite usar el midleware Multer para poder adjuntar una imagen con cada producto, al igual que en Crear. Este endpoint, que sirve para actualizar un producto existente, necesita disponer de un token de admin y adjuntarlo en el head. Al usar Multer, es necesario poner la información dentro del Body, pero en form-data:
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Body:
+```| KEY | VALUE |
+| --- | --- |
+| CategorieId | 3 |
+| SetId | 6 |
+| name | cambiado |
+| description | cambiado description |
+| price| 19.99 |
+| stock| 2 |
+| upload| 03-pirata-empotrador.jpg |
+
+```
+
+Respuesta:
+```JSON
+{
+    "message": "Producto con id 3 actualizado con éxito",
+    "productUpdated": {
+        "id": 3,
+        "name": "cambiado",
+        "description": "cambiado description",
+        "price": 19.99,
+        "stock": 2,
+        "CategorieId": 3,
+        "SetId": 6,
+        "img": "1653566248315-03-pirata-empotrador.jpg",
+        "createdAt": "2022-05-25T14:53:01.000Z",
+        "updatedAt": "2022-05-26T11:57:28.000Z"
+    }
+}
+```
+
+-------------------------------
 # Categorias
 
 # Sets

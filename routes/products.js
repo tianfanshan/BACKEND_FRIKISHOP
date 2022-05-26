@@ -10,7 +10,7 @@ const upload = require('../middelware/imgsource');
 
 router.post('/', authentication, isAdmin, upload.single('upload'), ProductController.create)
 router.get('/', ProductController.findAll)
-router.put('/id/:id', authentication, isAdmin, ProductController.update)
+router.put('/id/:id', authentication, isAdmin, upload.single('upload'), ProductController.update)
 router.delete('/id/:id', authentication, isAdmin, ProductController.delete)
 router.get('/id/:id', ProductController.getById)
 router.get('/name/:name', ProductController.getOneByName)
