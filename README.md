@@ -1145,16 +1145,7 @@ Header:
 | --- | --- |
 | authorization | Token |
 
-Body:
-```| KEY | VALUE |
-| --- | --- |
-| CategorieId | 3 |
-| SetId | 6 |
-| name | cambiado |
-| description | cambiado description |
-| price| 19.99 |
-| stock| 2 |
-| upload| 03-pirata-empotrador.jpg |
+
 
 ```
 
@@ -1164,6 +1155,111 @@ Se ha borrado la categoria con id: 2
 ```
 ---------------
 # Sets
+## Crear set
+
+**(Admin) POST** - `http://localhost:8080/sets2` 
+
+Endpoint para crear un set nuevo. Necesitas tener permisos, por lo que debes rellenar el header con lo siguiente:
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Body:
+````
+{
+    "name":"the last of us"
+}
+````    
+
+```
+
+Respuesta:
+```JSON
+{
+    "message": "Se ha añadido el Set correctamente",
+    "newSet": {
+        "id": 8,
+        "name": "the last of us",
+        "updatedAt": "2022-05-26T13:30:48.596Z",
+        "createdAt": "2022-05-26T13:30:48.596Z"
+    }
+}
+```
+---------------
+## Modificar set
+
+**(Admin) PUT** - `http://localhost:8080/sets/id/8` 
+
+Endpoint para modificar un set existente. Necesitas tener permisos, por lo que debes rellenar el header con lo siguiente:
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Body:
+````
+{
+    "name":"PUBG modificado"
+}
+````    
+
+```
+
+Respuesta:
+```JSON
+{
+    "message": "Set con id 8 actualizado con éxito",
+    "SetUpdated": {
+        "id": 8,
+        "name": "PUBG modificado",
+        "createdAt": "2022-05-26T13:30:48.000Z",
+        "updatedAt": "2022-05-26T13:32:39.000Z"
+    }
+}
+```
+------------------------
+## Borrar set
+
+**(Admin) DELETE** - `http://localhost:8080/sets/id/8` 
+
+Endpoint para borrar un set existente. Necesitas tener permisos, por lo que debes rellenar el header con lo siguiente:
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+
+
+Respuesta:
+```JSON
+El Set con id 8 ha sido eliminado con éxito
+
+```
+----------------------
+## Filtrar set por nombre
+**(Público) GET** - `http://localhost:8080/sets/name/god`
+Este endpoint te permite, de manera pública, acceder al set filtrando previamente por su nombre. 
+
+Respuesta:
+
+```JSON
+[
+    {
+        "id": 2,
+        "name": "Set God of War",
+        "createdAt": "2022-05-25T14:52:59.000Z",
+        "updatedAt": "2022-05-25T14:52:59.000Z"
+    }
+]
+```
+----------------------
 
 # Opiniones
 
