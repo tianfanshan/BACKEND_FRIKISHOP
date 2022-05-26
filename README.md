@@ -66,43 +66,43 @@ Requisitos imprescindibles del proyecto:
 
  ## Indice
 
- - Sobre el proyecto
+ - [Sobre el proyecto](#sobre-el-proyecto)
 
-    - Instalacion y despliegue
+    - [Instalacion y despliegue](#instalacion-y-despliegue)
 
-    - Tecnologias utilizadas
+    - [Tecnologias utilizadas](#tecnologias-utilizadas)
 
-    - Origen
+    - [Origen](#origen)
 
-    - Objetivos
+    - [Objetivos](#objetivos)
 
-    - Concepto e inspiración
+    - [Concepto e inspiración](#concepto-e-inspiración)
 
 - [Documentacion de API](#documentacion-de-api)
 
     - [Usuarios](#usuarios)
 
-    - Pedidos
+    - [Pedidos](#pedidos)
 
-    - Productos
+    - [Productos](#productos)
 
-    - Categorias
+    - [Categorias](#categorias)
 
-    - Sets
+    - [Sets](#sets)
 
-    - Opiniones
+    - [Opiniones](#opiniones)
 
-- Retos presentados
+- [Retos presentados](#retos-presentados)
 
-    - Tablas muchos a muchos
+    - [Tablas muchos a muchos](#tablas-muchos-a-muchos)
 
-    - Columnas adicionales en tablas intermedias
+    - [Columnas adicionales en tablas intermedias](#columnas-adicionales-en-tablas-intermedias)
 
-- Agradecimientos
+- [Agradecimientos](#agradecimientos)
 
-- En el tintero
+- [En el tintero](#en-el-tintero)
 
-- Autores
+- [Autores](#autores)
 
 # Sobre el proyecto
 
@@ -397,6 +397,159 @@ El usuario con id 2 (junto con su order y su review) ha sido eliminado con éxit
 -----------------------
 
 # Pedidos
+
+## Crear un pedido
+
+**(Registrado) POST** - `http://localhost:8080/orders`
+
+Endpoint que sirve para hacer la creacion de un pedido, acepta un array para que se puedan añadir diversos productos al mismo pedido, es necesario usar un token en el header para identificar el dueño del pedido y un body con los detalles del pedido (id del producto a introducir y la cantidad del mismo). Por defecto el pedido se genera con `"paid": "false"` ya que inicialmente no ha sido pagado.
+
+```JSON
+[
+    {
+        "ProductId":2,
+        "amount":101
+    },
+    {
+        "ProductId":4,
+        "amount":201
+    },
+    {
+        "ProductId":3,
+        "amount":406
+    }
+]
+```
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Resultado:
+```JSON
+Se ha creado el pedido correctamente
+```
+
+----------------------------------
+
+## Obtener todos los pedidos
+
+**(Admin) GET** - `http://localhost:8080/orders`
+
+Endpoint que devuelve todos los pedidos junto a su contenido, incluyendo la cantidad solicitada de cada uno. Solo es necesario un token de admin en la solicitud.
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+```JSON
+[
+    {
+        "id": 1,
+        "paid": false,
+        "UserId": 1,
+        "createdAt": "2022-05-25T13:31:25.000Z",
+        "updatedAt": "2022-05-25T13:31:25.000Z",
+        "Products": [
+            {
+                "id": 7,
+                "name": "Vegeta",
+                "description": "Vegeta super saiyajin 3",
+                "price": 27.5,
+                "stock": 3049,
+                "CategorieId": 1,
+                "SetId": 7,
+                "img": "07-choni-de-mercadillo.jpg",
+                "createdAt": "2022-05-25T13:31:25.000Z",
+                "updatedAt": "2022-05-25T13:31:25.000Z",
+                "ProductOrders": {
+                    "amount": 5
+                }
+            },
+            {
+                "id": 8,
+                "name": "Aragorn",
+                "description": "Aragorn conquistando las tierras medias",
+                "price": 17.65,
+                "stock": 23495,
+                "CategorieId": 4,
+                "SetId": 6,
+                "img": "08-coletas-medieval.jpg",
+                "createdAt": "2022-05-25T13:31:25.000Z",
+                "updatedAt": "2022-05-25T13:31:25.000Z",
+                "ProductOrders": {
+                    "amount": 1
+                }
+            }
+        ]
+    },{
+        ...
+        ...
+        ...
+    }
+]
+```
+
+--------------------------------------
+
+## Mostrar pedido por id
+
+**(Admin) GET** - `http://localhost:8080/orders/id/:id`
+
+Endpoint que sirve para extraer el contenido de un pedido con cierto id, este id se tiene que enviar en la URL de la solicitud en `:id`, para ello es necesario un token de admin.
+
+Header:
+
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Respuesta:
+```JSON
+{
+    "id": 1,
+    "paid": false,
+    "UserId": 1,
+    "createdAt": "2022-05-25T13:31:25.000Z",
+    "updatedAt": "2022-05-25T13:31:25.000Z",
+    "Products": [
+        {
+            "id": 7,
+            "name": "Vegeta",
+            "description": "Vegeta super saiyajin 3",
+            "price": 27.5,
+            "stock": 3049,
+            "CategorieId": 1,
+            "SetId": 7,
+            "img": "07-choni-de-mercadillo.jpg",
+            "createdAt": "2022-05-25T13:31:25.000Z",
+            "updatedAt": "2022-05-25T13:31:25.000Z",
+            "ProductOrders": {
+                "amount": 5
+            }
+        },
+        {
+            "id": 8,
+            "name": "Aragorn",
+            "description": "Aragorn conquistando las tierras medias",
+            "price": 17.65,
+            "stock": 23495,
+            "CategorieId": 4,
+            "SetId": 6,
+            "img": "08-coletas-medieval.jpg",
+            "createdAt": "2022-05-25T13:31:25.000Z",
+            "updatedAt": "2022-05-25T13:31:25.000Z",
+            "ProductOrders": {
+                "amount": 1
+            }
+        }
+    ]
+}
+```
 
 # Productos
 
