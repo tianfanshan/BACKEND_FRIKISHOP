@@ -11,17 +11,7 @@ const SetController = {
             res.send('Algo ha salido mal...')
         }
     },
-    // async findAll(req, res) {
-    //     try {
-    //         res.send(
-    //             await Set.findAll({ include: [Categorie] })
-    //         )
-    //     } catch (error) {
 
-    //         console.log(error)
-    //         res.status(500).send({ message: 'Ha habido un problema ' })
-    //     }
-    // },
     async update(req, res) {
         try {
             await Set.update({...req.body }, {
@@ -52,16 +42,7 @@ const SetController = {
         }
 
     },
-    // async getById(req, res) {
-    //     try {
-    //         res.send(
-    //             await Set.findByPk(req.params.id, { include: [Categorie] })
-    //         )
-    //     } catch (error) {
-    //         console.log(error)
-    //         res.status(500).send({ message: 'Ha habido un problema ' })
-    //     }
-    // },
+
     async getOneByName(req, res) {
         try {
             res.send(await Set.findAll({
@@ -70,7 +51,7 @@ const SetController = {
                         [Op.like]: `%${req.params.name}%`
                     }
                 },
-                // include: [Categorie]
+
             }))
         } catch (error) {
             console.log(error)

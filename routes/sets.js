@@ -8,8 +8,7 @@ router.put('/id/:id', authentication, isAdmin, SetController.update)
 router.delete('/id/:id', authentication, isAdmin, SetController.delete)
 router.get('/name/:name', SetController.getOneByName)
 
-//* Endpoint que extraiga todos los sets con sus productos
-//* Endpoint que extraiga todas las categorias que hay en los sets
+
 
 
 module.exports = router;

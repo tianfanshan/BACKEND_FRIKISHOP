@@ -8,7 +8,7 @@ const transporter = require('../config/nodemailer');
 const UserController = {
     async create(req, res, next) {
         try {
-            req.body.role = "user" //TODO hay que modificar el diagrama
+            req.body.role = "user"
             req.body.confirmed = false
             const hashedPassword = await bcrypt.hashSync(req.body.password, 10)
             const user = await User.create({...req.body, password: hashedPassword });
@@ -114,8 +114,8 @@ const UserController = {
             });
             res.send({ message: 'Desconectado con éxito' })
         } catch (error) {
-            console.log(error.errors)
-            console.log("AQUIIIII");
+            console.log(error)
+
             res.status(500).send({ message: 'hubo un problema al tratar de desconectarte' })
         }
     },
