@@ -155,7 +155,7 @@ Requisitos imprescindibles del proyecto:
 - [X] Endpoint para login(utilizando bcrypt +JWT)
 - [X] Endpoint que nos traiga la información del usuario conectado junto a los pedidos que tiene y los productos que contiene cada pedido
 - [X] Endpoint para el logout
-- [/] Implementa validación a la hora de crear un usuario para que se rellene todos los campos y si no se hace que devuelva un mensaje
+- [X] Implementa validación a la hora de crear un usuario para que se rellene todos los campos y si no se hace que devuelva un mensaje
 
 
 
