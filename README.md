@@ -104,6 +104,17 @@ Requisitos imprescindibles del proyecto:
 
 - Autores
 
+# Sobre el proyecto
+
+## Instalacion y despliegue
+
+## Tecnologias utilizadas
+
+## Origen
+
+## Objetivos
+
+## Concepto e inspiración
 
 # Documentacion de API
 
@@ -385,3 +396,24 @@ El usuario con id 2 (junto con su order y su review) ha sido eliminado con éxit
 
 -----------------------
 
+# Pedidos
+
+# Productos
+
+# Categorias
+
+# Sets
+
+# Opiniones
+
+# Retos presentados
+
+## Tablas muchos a muchos
+
+## Columnas adicionales en tablas intermedias
+
+# Agradecimientos
+
+# En el tintero
+
+# Autores
