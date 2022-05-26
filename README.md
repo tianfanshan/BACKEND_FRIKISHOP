@@ -379,6 +379,8 @@ Respuesta:
 
 --------------------
 
+## Borrar usuario por id
+
 **(Admin) DELETE** - `http://localhost:8080/users/id/:id`
 
 Endpoint que sirve para eliminar a un usuario por su id, es necesario disponer de un token de admin y adjuntarlo en el head. Tambien se eliminan sus reviews y pedidos.
@@ -669,7 +671,7 @@ Respuesta:
 ```
 
 -------------------------------
-# Filtrar producto por nombre
+## Filtrar producto por nombre
 **(Público) GET** - `http://localhost:8080/products/name/ezi`
 Este endpoint te permite, de manera pública, acceder a los productos junto con su categoría y el set al que pertenecen filtrando por nombre asociado al producto.
 
@@ -699,7 +701,7 @@ Respuesta:
 ````
 ---------------------
 
-# Ordenar productos por precio
+## Ordenar productos por precio
 
 **(Público) GET** - `http://localhost:8080/products/order`
 Este endpoint te permite, de manera pública, acceder a los productos junto con su categoría y el set al que pertenecen pero esta vez mostrará los productos ordenados de mayor a menor precio.
@@ -751,7 +753,7 @@ Respuesta:
 ]
 ```
 --------------------------
-# Filtrar productos entre un rango de precio determinado
+## Filtrar productos entre un rango de precio determinado
 **(Público) GET** - `http://localhost:8080/products/filter/pricemin/1/pricemax/5`
 Este endpoint te permite, de manera pública, acceder a los productos junto con su categoría y el set al que pertenecen filtrados según un mínimo y máximo de precio que estipulas en la url.
 
@@ -798,7 +800,7 @@ Respuesta:
 ]
 ```
 -------------------------
-# Ver producto por Id
+## Ver producto por Id
 **(Público) GET** - `http://localhost:8080/products/id/1`
 Este endpoint te permite, de manera pública, acceder a al producto perteneciente a la Id con su categoría y el set al que pertenecen.
 
@@ -825,7 +827,9 @@ Respuesta:
 }
 ````
 -----------------------
+
 ## Borrar productos
+
 **(Admin) DELETE** - `http://localhost:8080/products/id/2` 
 
 Aquí además, en la ruta debemos añadir:
@@ -874,6 +878,7 @@ Respuesta:
 
 -------------------------------
 ## Modificar producto
+
 **(Admin) POST** - `http://localhost:8080/products/id/3` 
 Aquí además, en la ruta debemos añadir:
 `````
@@ -920,7 +925,9 @@ Respuesta:
 ```
 --------------------------------
 # Categorias
+
 ## Crear
+
 **(Admin) POST** - `http://localhost:8080/categories` 
 
 Este endpoint nos permite crear diferentes categorías, siempre que tengas el rango de autorización requerido.
@@ -939,6 +946,7 @@ Se ha añadido batas a categorias
 ```
 --------------------------------
 ## Mostrar todos las categorías
+
 **(Público) GET** - `http://localhost:8080/categories`
 Este endpoint te permite, de manera pública, acceder a todas las categorías de la base de datos. Además te trae los productos que pertenecen a esa categoría, con sus correspondientes datos.
 
@@ -1047,6 +1055,7 @@ Respuesta:
 ```
 ----------------------
 ## Mostrar categoría por id
+
 **(Público) GET** - `http://localhost:8080/categories/id/4`
 Este endpoint te permite, de manera pública, acceder a la categoría filtrando previamente por su Id. Además te trae los productos que pertenecen a esa categoría, con sus correspondientes datos.
 
@@ -1087,7 +1096,9 @@ Respuesta:
 }
 ```
 ---------------------------
+
 ## Filtrar categoría por nombre
+
 **(Público) GET** - `http://localhost:8080/categories/search/pos`
 Este endpoint te permite, de manera pública, acceder a la categoría filtrando previamente por su nombre. 
 
@@ -1104,7 +1115,9 @@ Respuesta:
 ]
 ```
 ----------------------
+
 ## Modificar categoria
+
 **(Admin) POST** - `http://localhost:8080/categories/id/2` 
 
  Este endpoint que sirve para modificar una categoría, es necesario disponer de un token de admin y adjuntarlo en el head. 
@@ -1134,7 +1147,9 @@ Respuesta:
 }
 ```
 -------------------
+
 ## Borrar categoria
+
 **(Admin) DELETE** - `http://localhost:8080/categories/id/2` 
 
 Endpoint para borrar categoría por Id. Necesitas tener permisos, por lo que debes rellenar el header con lo siguiente:
