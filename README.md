@@ -180,29 +180,32 @@ Respuesta:
 
 ------------------------
 
-
-
-
-<!-- REVISAR -->
-
 ## Cerrar sesión
 
-## ¡¡¡DA ERROR!!!
+**(Registrado) DELETE** - `http://localhost:8080/users/logout` 
 
+Endpoint que sirve para cerrar sesión de un usuario activo
 
+Header:
 
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
 
-
+Respuesta:
+```JSON
+{
+    "message": "Desconectado con éxito"
+}
+```
 
 ----------------------
 
-<!-- REVISAR -->
-
 ## Modificar datos de usuario
 
-**(Registrado) PUT** - `http://localhost:8080/users/id/:id`
+**(Registrado) PUT** - `http://localhost:8080/users/`
 
-Endpoint que sirve para para modificar los datos de usuarios, para su funcionamiento es necesario que se le pase en el body los datos a modificar y en el header el token activo
+Endpoint que sirve para para modificar los datos de usuarios, para su funcionamiento es necesario que se le pase en el body los datos a modificar y en el header el token activo.
 
 Body:
 ```JSON
@@ -235,6 +238,7 @@ Resultado:
     }
 }
 ```
+
 -------------------------------
 
 ## Obtener todos los usuarios con sus pedidos
@@ -380,3 +384,4 @@ El usuario con id 2 (junto con su order y su review) ha sido eliminado con éxit
 ```
 
 -----------------------
+

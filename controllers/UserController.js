@@ -66,11 +66,11 @@ const UserController = {
         try {
             const user = await User.update({...req.body }, {
                 where: {
-                    id: req.params.id
+                    id: req.user.id
                 }
             })
-            const userUpdated = await User.findByPk(req.params.id)
-            res.send({ message: `Usuario con id ${req.params.id} actualizado con éxito`, userUpdated });
+            const userUpdated = await User.findByPk(req.user.id)
+            res.send({ message: `Usuario con id ${req.user.id} actualizado con éxito`, userUpdated });
         } catch (error) {
             console.log(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
