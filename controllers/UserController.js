@@ -34,7 +34,7 @@ const UserController = {
             )
         } catch (error) {
 
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
     },
@@ -59,7 +59,7 @@ const UserController = {
             Token.create({ token: token, UserId: user.id })
             res.send({ message: 'Eres un crack, fiera, mastodonte', user, token })
         } catch (error) {
-            console.log(error);
+            console.error(error);
         }
     },
     async update(req, res) {
@@ -72,7 +72,7 @@ const UserController = {
             const userUpdated = await User.findByPk(req.user.id)
             res.send({ message: `Usuario con id ${req.user.id} actualizado con éxito`, userUpdated });
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
 
@@ -97,7 +97,7 @@ const UserController = {
 
             res.send(`El usuario con id ${req.params.id} (junto con su order y su review) ha sido eliminado con éxito`)
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
 
@@ -114,7 +114,7 @@ const UserController = {
             });
             res.send({ message: 'Desconectado con éxito' })
         } catch (error) {
-            console.log(error)
+            console.error(error)
 
             res.status(500).send({ message: 'hubo un problema al tratar de desconectarte' })
         }
@@ -126,7 +126,7 @@ const UserController = {
             )
         } catch (error) {
 
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
     },
