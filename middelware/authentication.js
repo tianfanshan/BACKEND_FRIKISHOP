@@ -17,7 +17,7 @@ const authentication = async(req, res, next) => {
             }
         });
         if (!tokenFound) {
-            res.status(401).send({ message: 'No estas autorizado' });
+            return res.status(401).send({ message: 'No estas autorizado' });
         }
         req.user = user;
         next();

@@ -114,7 +114,8 @@ const UserController = {
             });
             res.send({ message: 'Desconectado con éxito' })
         } catch (error) {
-            console.log(error)
+            console.log(error.errors)
+            console.log("AQUIIIII");
             res.status(500).send({ message: 'hubo un problema al tratar de desconectarte' })
         }
     },
