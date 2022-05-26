@@ -1178,9 +1178,230 @@ Respuesta:
 Se ha borrado la categoria con id: 2
 ```
 ---------------
+
 # Sets
 
-# Opiniones
+# Reseñas
+
+## Filtrar producto por id con categoria y reseñas
+
+**(Publico) POST** - `http://localhost:8080/reviews/review_product/id/:id` 
+
+Endpoint que te devuelve un producto concreto junto a su categoria y las reseñas que tienen. Para usar este endpoint solo es necesario pasar por la URL el id del producto del que quieres obtener la informacion
+
+```JSON
+{
+    "id": 1,
+    "name": "Figura Kratos",
+    "description": "Una maravillosa figura de Kratos en su última aventura en las tierras nórdicas",
+    "price": 10,
+    "stock": 2495,
+    "CategorieId": 1,
+    "SetId": 2,
+    "img": "01-leñador-empotrador.jpg",
+    "createdAt": "2022-05-25T13:31:25.000Z",
+    "updatedAt": "2022-05-25T13:31:25.000Z",
+    "Categorie": {
+        "id": 1,
+        "name": "Figuras",
+        "createdAt": "2022-05-25T13:31:25.000Z",
+        "updatedAt": "2022-05-25T13:31:25.000Z"
+    },
+    "Reviews": [
+        {
+            "id": 1,
+            "title": "Guauuu",
+            "body": "Tanto Mike como Vanesa prestan una atención maravillosa en la tienda, mi figura es increíble",
+            "score": 10,
+            "UserId": 1,
+            "ProductId": 1,
+            "createdAt": "2022-05-25T13:31:25.000Z",
+            "updatedAt": "2022-05-25T13:31:25.000Z"
+        }
+    ]
+}
+```
+
+----------------
+
+## Crear una reseña 
+
+**(Registrado) POST** - `http://localhost:8080/reviews` 
+
+Endpoint que consiste en la publicacion de una reseña, esto acepta un parametro por el header que es el token del usuario que va a generar la reseña, y por el body el resto de parametros.
+
+Header:
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Body:
+```JSON
+{
+    "ProductId":2,
+    "title": "Me fascinaron",
+    "body": "Me llegaron los pedidos super rápido, muy buena calidad",
+    "score": 8
+}
+```
+
+Respuesta:
+```JSON
+{
+    "message": "Se ha añadido correctamente",
+    "newReview": {
+        "id": 20,
+        "ProductId": 2,
+        "title": "Me fascinaron",
+        "body": "Me llegaron los pedidos super rápido, muy buena calidad",
+        "score": 8,
+        "UserId": 5,
+        "updatedAt": "2022-05-26T13:33:47.678Z",
+        "createdAt": "2022-05-26T13:33:47.678Z"
+    }
+}
+```
+---------------------
+
+## Modificar una reseña 
+
+**(Registrado) PUT** - `http://localhost:8080/reviews/id/:id` 
+
+Endpoint que sirve para modificar una reseña, para su ejecucion, es necesario pasar por le URL el id de la reseña, hay que incluir en el header el token del dueño de la reseña a modificar, por ultimo dentro del body hay que introducir los campos a modificar de la reseña.
+
+Header:
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Body:
+```JSON
+{
+    "title": "La he cambiado",
+    "body": "¡Los productos son geniales!",
+    "score": 2
+}
+```
+
+Respuesta:
+```JSON
+{
+    "message": "Se han modificado:",
+    "updateds": [
+        1
+    ]
+}
+```
+
+----------------------------
+
+## Eliminar una reseña por su id 
+        
+**(Registrado) DELETE** - `http://localhost:8080/reviews/id/:id` 
+
+Endpoint que sirve para eliminar una reseña, para ello necesitas pasar el id de la reseña via URL y por el header tienes que pasar el token vinculado al usuario que generó la reseña.
+
+Header:
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Resultado:
+```JSON
+La review con id 6 ha sido eliminada con éxito
+```
+
+-------------------
+
+## Obtener todas las reseñas junto a sus creadores 
+
+**(Admin) GET** - `http://localhost:8080/reviews` 
+
+Endpoint encargado de devolver todas las reseñas junto a sus creadores, para ellos simplemente hay que hacer la solicitud con una key de administrador en el header.
+
+Respuesta:
+```JSON
+[
+    {
+        "id": 1,
+        "title": "Guauuu",
+        "body": "Tanto Mike como Vanesa prestan una atención maravillosa en la tienda, mi figura es increíble",
+        "score": 10,
+        "UserId": 1,
+        "ProductId": 1,
+        "createdAt": "2022-05-25T13:31:25.000Z",
+        "updatedAt": "2022-05-25T13:31:25.000Z",
+        "User": {
+            "id": 1,
+            "username": "Paquito Molina",
+            "email": "Paqito@gmail.com",
+            "password": "$2a$10$EF0vS7yxuG.xAzE6uMSIfuJKbc9gR6pRoKgnMKxI04nG15fJQ0IOS",
+            "adress": "Calle Molona 69",
+            "role": "user",
+            "confirmed": true,
+            "createdAt": "2022-05-25T13:31:25.000Z",
+            "updatedAt": "2022-05-25T13:31:25.000Z"
+        }
+    },{
+        ...
+        ...
+        ...
+    }
+]
+```
+
+-------------------------
+
+## Mostrar todos product junto con categ. y review
+
+**(Admin) GET** - `http://localhost:8080/reviews/review_product` 
+
+Endpoint donde se obtiene todos los productos junto a sus categorias y sus reviews, solo es necesario un token de administrador.
+
+Header:
+| KEY | VALUE |
+| --- | --- |
+| authorization | Token |
+
+Respuesta:
+```JSON
+[
+    {
+        "id": 1,
+        "name": "Figura Kratos",
+        "description": "Una maravillosa figura de Kratos en su última aventura en las tierras nórdicas",
+        "price": 10,
+        "stock": 2495,
+        "CategorieId": 1,
+        "SetId": 2,
+        "img": "01-leñador-empotrador.jpg",
+        "createdAt": "2022-05-25T13:31:25.000Z",
+        "updatedAt": "2022-05-25T13:31:25.000Z",
+        "Categorie": {
+            "id": 1,
+            "name": "Figuras",
+            "createdAt": "2022-05-25T13:31:25.000Z",
+            "updatedAt": "2022-05-25T13:31:25.000Z"
+        },
+        "Reviews": [
+            {
+                "id": 1,
+                "title": "Guauuu",
+                "body": "Tanto Mike como Vanesa prestan una atención maravillosa en la tienda, mi figura es increíble",
+                "score": 10,
+                "UserId": 1,
+                "ProductId": 1,
+                "createdAt": "2022-05-25T13:31:25.000Z",
+                "updatedAt": "2022-05-25T13:31:25.000Z"
+            }
+        ]
+    },{
+        ...
+        ...
+    }
+]
+```
+--------------------
 
 # Retos presentados
 

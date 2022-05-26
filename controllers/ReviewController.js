@@ -4,8 +4,8 @@ const { Op } = Sequelize
 const ReviewController = {
     async create(req, res) {
         try {
-            await Review.create({...req.body, UserId: req.user.id })
-            res.status(201).send('Se ha añadido correctamente')
+            const newReview = await Review.create({...req.body, UserId: req.user.id })
+            res.status(201).send({ message: 'Se ha añadido correctamente', newReview })
         } catch (error) {
             console.log(error);
             res.send('Algo ha salido mal...')
@@ -63,7 +63,8 @@ const ReviewController = {
         try {
             await Review.destroy({
                 where: {
-                    id: req.params.id
+                    id: req.params.id,
+                    UserId: req.user.id
                 }
             })
 
