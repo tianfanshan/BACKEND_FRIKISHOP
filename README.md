@@ -2,7 +2,7 @@
 
  #  <center>:video_game: :space_invader: Frikishop :space_invader: :video_game: </center> 
 
- ## Indice :bookmark:
+ ## :bookmark: Indice 
 
  - [Sobre el proyecto](#sobre-el-proyecto)
 
@@ -42,11 +42,11 @@
 
 - [Autores](#autores)
 
-# Sobre el proyecto :clipboard:
+# :clipboard: Sobre el proyecto 
 
 
 
-## Instalacion y despliegue :bar_chart:
+## :bar_chart: Instalacion y despliegue 
 Para el desarrollo de esta API utilizaremos mysql con Sequelize y express mediante Node.
 El proyecto se subirá a un repositorio público de GitHub.
 Para instalar este proyecto debes hacer lo siguiente: primero acceder desde github al repositorio y proceder a clonártelo con el siguiente comando:
@@ -81,7 +81,7 @@ Seguidamente, dentro de la carpeta config, debes crearte un archivo llamado "con
 }
 ``````
 
-## Tecnologias/packages utilizados :nut_and_bolt:
+## :nut_and_bolt: Tecnologias/packages utilizados 
 - Javascript
 - Mysql
 - Node
@@ -93,7 +93,7 @@ Seguidamente, dentro de la carpeta config, debes crearte un archivo llamado "con
 - Multer
 - Postman
 
-## Origen :dart:
+## :dart: Origen 
 Es un proyecto de backend de la academia The Brigde para asentar conocimientos en todo el terreno de base de datos mysql conjuntamente con Node+Express y Sequelize. Ha consistido en desarrollar una tienda que, en nuestro caso, posee una temática friki, de forma que tenemos tanto Categorías fisicas por un lado, como Sets dentro de esas categorías pertenecientes a diversos videojuegos, animes, etc.
 
 
@@ -107,7 +107,7 @@ Para organizar el trabajo, hemos hecho uso de Trello para dividir las tareas y t
 ![foto](/toReadme/trello.png)
 
  
-## Objetivos :checkered_flag:
+## :checkered_flag: Objetivos 
 
 
 - [X] Registro de usuarios usando Bcrypt.
@@ -173,10 +173,10 @@ Requisitos imprescindibles del proyecto:
     - Actualizar el endpoint de traer producto por id y que ahora muestre los productos junto a sus categorías y sus reviews
 
 
-## Concepto e inspiración :heart_decoration:
+## :heart_decoration: Concepto e inspiración 
 La idea inicial de este proyecto surge cuando dos par de frikis se juntan para realizar un backend. Cada uno de nosotros, uno enamorado de Valorant y otro amante de los animes, vimos claro que nuestro proyecto de backend debía pertenecer a nuestro campo. De ahí surgió la estructura inicial de nuestra tienda friki, en la que podremos encontrar cosas que nos apasionan a ambos.
 
-# Documentacion de API :books:
+# :books: Documentacion de API 
 Hemos utilizado Postman para ir probando cada uno de los endpoints creados para diversas funciones.
 ![foto](/toReadme/postman.png)
 # Usuarios
@@ -1531,7 +1531,7 @@ Respuesta:
 ```
 --------------------
 
-# Retos presentados :bangbang:
+# :bangbang: Retos presentados 
 
 ## Tablas muchos a muchos
 Para poder relacionar correctamente la tabla de pedidos y productos era necesaria una tabla intermedia, ya que era una relación de muchos a muchos.
@@ -1541,9 +1541,9 @@ Esta tabla tuvo una dificultad añadida ya que la documentación de Sequelize in
 
 ## Columnas adicionales en tablas intermedias
 A la hora de intentar introducir los datos en la tabla intermedia mediante el método `addXXX` de Sequelize, no nos permitía introducir este valor extra. Esto lo solucionamos generando un bucle que recorriese la solicitud, la cual entraba en forma de array. Esto creaba filas individualmente por cada elemento, con su propio atributo amount.
-# Agradecimientos :purple_heart:
+# :purple_heart: Agradecimientos 
 A la lead instructor [Sofía](https://github.com/SofiaPinilla), y al TA [Germán](https://github.com/GeerDev) por ayudarnos en algunos momentos de crisis con algún que otro endpoint que se nos atravesó, además de algún crasheo inesperado.
-# En el tintero :black_nib:
+# :black_nib: En el tintero 
 
 - [ ] Implementación de frontend
 - [ ] Añadir validaciones extra, por ejemplo, validación de password con RegEx
@@ -1554,7 +1554,7 @@ A la lead instructor [Sofía](https://github.com/SofiaPinilla), y al TA [Germán
     - [ ] Endpoint en el que el usuario pueda autoeliminarse.
     - [ ] Endpoint en el que el usuario pueda recibir los datos de su propia sesión
   
-# Autores :couple:
+# :couple: Autores 
 
 - :mushroom: [Mike](https://github.com/MrSetOne) 
 
