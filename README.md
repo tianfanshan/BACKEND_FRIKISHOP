@@ -6,9 +6,9 @@
 
  - [Sobre el proyecto](#sobre-el-proyecto)
 
-    - [Instalacion y despliegue](#instalacion-y-despliegue)
+    - [Instalación y despliegue](#instalacion-y-despliegue)
 
-    - [Tecnologias utilizadas](#tecnologias-utilizadas)
+    - [Tecnologías utilizadas](#tecnologias-utilizadas)
 
     - [Origen](#origen)
 
