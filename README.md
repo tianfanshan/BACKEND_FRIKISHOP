@@ -103,6 +103,9 @@ Además de la utilización de estas tecnologías, hemos trabajo en equipo median
 Este es el diagrama que hemos confeccionado para realizar nuestra base de datos de la tienda:
 ![foto](/toReadme/schema_png.png)
 
+Para organizar el trabajo, hemos hecho uso de Trello para dividir las tareas y tener un planteamiento más tangible de las diferentes fases del proyecto.
+![foto](/toReadme/trello.png)
+
  
 ## Objetivos
 
@@ -125,7 +128,7 @@ Requisitos imprescindibles del proyecto:
 - [X] El endpoint de traer productos debe mostrarse junto a la categoría o categorías que pertenece
 - [X] Endpoint que traiga un producto por su id
 - [X] Filtro para buscar producto por nombre
-- [/] Filtro para buscar producto por precio
+- [X] Filtro para buscar producto por precio
 - [X] Filtro que ordene los productos de mayor a menor precio
 - [X] Implementa validación a la hora de crear un producto para que se rellene todos los campos y si no se hace que devuelva un mensaje
 - [X] Solo podrás crear, actualizar y eliminar productos si estás autenticado.
@@ -175,6 +178,7 @@ La idea inicial de este proyecto surge cuando dos par de frikis se juntan para r
 
 # Documentacion de API
 Hemos utilizado Postman para ir probando cada uno de los endpoints creados para diversas funciones.
+![foto](/toReadme/postman.png)
 # Usuarios
 
 ## Registrarse
