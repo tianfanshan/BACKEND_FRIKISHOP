@@ -1,66 +1,4 @@
-<!-- # PROJECT_BACKEND
 
-- [X] Registro de usuarios usando Bcrypt.
-- [X] Login de usuarios + token + middleware.
-- [X] Que sea capaz de crear un CRUD.
-- [X] Al menos una relación Many to Many y otra One to Many.
-- [X] Utilización de seeders
-
-Requisitos imprescindibles del proyecto:
-- [X] Uso de ramas con git, cuando se termine el proyecto deberán quedar dos ramas la master o main y la develop.
-- [X] Presentación de README excelente.
-
-## 1.1.Endpoints
-  - _Productos_
-- [X] *CRUD productos*
-- [X] El endpoint de traer productos debe mostrarse junto a la categoría o categorías que pertenece
-- [X] Endpoint que traiga un producto por su id
-- [X] Filtro para buscar producto por nombre
-- [/] Filtro para buscar producto por precio
-- [X] Filtro que ordene los productos de mayor a menor precio
-- [X] Implementa validación a la hora de crear un producto para que se rellene todos los campos y si no se hace que devuelva un mensaje
-- [X] Solo podrás crear, actualizar y eliminar productos si estás autenticado.
-
-
-
-  - _Categorías_
-- [X] *CRUD Categorías*
-- [X] El endpoint para ver todas las categorías junto a los productos que tienen
-- [X] Crea un endpoint que devuelva una categoría por id
-- [X] Filtro para buscar categoría por nombre
-
-
-
-  - _Pedidos_
-- [X] Crea un endpoint para ver los pedidos junto a los productos que tienen 
-- [X] Crea un endpoint para crear pedidos
-
-
-
-
- - _Usuarios_
-- [X] Endpoint para registrar un usuario utilizando bcrypt
-- [X] Endpoint para login(utilizando bcrypt +JWT)
-- [X] Endpoint que nos traiga la información del usuario conectado junto a los pedidos que tiene y los productos que contiene cada pedido
-- [X] Endpoint para el logout
-- [/] Implementa validación a la hora de crear un usuario para que se rellene todos los campos y si no se hace que devuelva un mensaje
-
-
-
- - _Seeders_
-- [X] Crea 5 productos con un seeder
-
-## 1.2. Extra		
-- [X] Implementación de roles:
-    - Crear un rol Admin y que solo los usuarios con ese rol puedan crear, actualizar y eliminar productos.
-- [X] Investiga que es el middleware multer e implementalo para poder adjuntar imágenes al crear o actualizar productos.
-- [X] Reviews
-    - CRUD reviews
-    - El endpoint de traer reviews debe mostrarlas junto al usuario que hizo esa review
-    - Actualizar el endpoint de traer todos productos y que ahora muestre los productos junto a sus categorías y sus reviews
-    - Actualizar el endpoint de traer producto por id y que ahora muestre los productos junto a sus categorías y sus reviews
-
- -->
 
  # <center>Frikishop</center>
 
@@ -106,15 +44,131 @@ Requisitos imprescindibles del proyecto:
 
 # Sobre el proyecto
 
-## Instalacion y despliegue
 
-## Tecnologias utilizadas
+
+## Instalacion y despliegue
+Para el desarrollo de esta API utilizaremos mysql con Sequelize y express mediante Node.
+El proyecto se subirá a un repositorio público de GitHub.
+Para instalar este proyecto debes hacer lo siguiente: primero acceder desde github al repositorio y proceder a clonártelo con el siguiente comando:
+
+git clone https://github.com/vaneebg/PROJECT_BACKEND
+
+Una vez clonado el respositorio es muy importante que en tu consola instales todos los npm que necesita el proyecto con el siguiente comando: 
+````
+npm i
+````
+Además, si no tienes instalado Sequelize de forma global, deberás hacerlo con el siguiente comando:
+````
+npm install sequelize-cli -g
+````
+
+Seguidamente, dentro de la carpeta config, debes crearte un archivo llamado "config.json" con la siguiente información:
+`````
+{
+    "development": {
+        "username": "Your user", // Aquí introducir tu usuario de mysql 
+        "password": "Your pass", //Introducir tu contraseña de mysql
+        "database": "Your db", // Nombre de tu base de datos
+        "host": "Your host", //Tu host
+        "dialect": "mysql",
+        "jwt_secret": "YourJWTPass", //La firma para verificar que el remitente del JWT es quien dice ser
+        "auth": {
+            "user": "yourMail@gmail.com", //Nombre de la dirección de email con la que quieras enviar el correo de confirmación para registrarte
+            "pass": "YourPass" //Contraseña de esa cuenta de email
+        }
+    },
+    ...
+}
+``````
+
+## Tecnologias/packages utilizados
+- Javascript
+- Mysql
+- Node
+- Express
+- Sequelize
+- Nodemailer
+- Bcrypt
+- Jsonwebtoken
+- Multer
 
 ## Origen
+Es un proyecto de backend de la academia The Brigde para asentar conocimientos en todo el terreno de base de datos mysql conjuntamente con Node+Express y Sequelize. Ha consistido en desarrollar una tienda que, en nuestro caso, posee una temática friki, de forma que tenemos tanto Categorías fisicas por un lado, como Sets dentro de esas categorías pertenecientes a diversos videojuegos, animes, etc.
 
+
+Además de la utilización de estas tecnologías, hemos trabajo en equipo mediante la utilización de diversas ramas de Git. Primeramente se ha creado la rama develop y desde ahí hemos ido diversificando en varias subramas según qué finalidad tuviese cada nueva aportación. El objetivo final es trabajar conjuntamente desde develop, mergeando ramas según se avance y teniendo en cuenta el trabajo del compañero. Finalmente, cuando se prueba el proyecto entero desde develop y se comprueba que todo funciona y está correcto, se acaba añadiendo a la rama main.
+
+
+Este es el diagrama que hemos confeccionado para realizar nuestra base de datos de la tienda:
+![foto](/toReadme/schema_png.png)
 ## Objetivos
 
+
+- [X] Registro de usuarios usando Bcrypt.
+- [X] Login de usuarios + token + middleware.
+- [X] Que sea capaz de crear un CRUD.
+- [X] Al menos una relación Many to Many y otra One to Many.
+- [X] Utilización de seeders
+
+Requisitos imprescindibles del proyecto:
+- [X] Uso de ramas con git, cuando se termine el proyecto deberán quedar dos ramas la master o main y la develop.
+- [X] Presentación de README excelente.
+
+## 1.1. Endpoints
+
+  - _**Productos**_
+    
+- [X] CRUD productos
+- [X] El endpoint de traer productos debe mostrarse junto a la categoría o categorías que pertenece
+- [X] Endpoint que traiga un producto por su id
+- [X] Filtro para buscar producto por nombre
+- [/] Filtro para buscar producto por precio
+- [X] Filtro que ordene los productos de mayor a menor precio
+- [X] Implementa validación a la hora de crear un producto para que se rellene todos los campos y si no se hace que devuelva un mensaje
+- [X] Solo podrás crear, actualizar y eliminar productos si estás autenticado.
+
+
+
+  - _**Categorías**_
+- [X] CRUD Categorías
+- [X] El endpoint para ver todas las categorías junto a los productos que tienen
+- [X] Crea un endpoint que devuelva una categoría por id
+- [X] Filtro para buscar categoría por nombre
+
+
+
+  - _**Pedidos**_
+- [X] Crea un endpoint para ver los pedidos junto a los productos que tienen 
+- [X] Crea un endpoint para crear pedidos
+
+
+
+
+    - _**Usuarios**_
+- [X] Endpoint para registrar un usuario utilizando bcrypt
+- [X] Endpoint para login(utilizando bcrypt +JWT)
+- [X] Endpoint que nos traiga la información del usuario conectado junto a los pedidos que tiene y los productos que contiene cada pedido
+- [X] Endpoint para el logout
+- [/] Implementa validación a la hora de crear un usuario para que se rellene todos los campos y si no se hace que devuelva un mensaje
+
+
+
+    - _**Seeders**_
+- [X] Crea 5 productos con un seeder
+
+## 1.2. Extra		
+- [X] **Implementación de roles:**
+    - Crear un rol Admin y que solo los usuarios con ese rol puedan crear, actualizar y eliminar productos.
+- [X] **Investiga que es el middleware multer** e implementalo para poder adjuntar imágenes al crear o actualizar productos.
+- [X] **Reviews**
+    - CRUD reviews
+    - El endpoint de traer reviews debe mostrarlas junto al usuario que hizo esa review
+    - Actualizar el endpoint de traer todos productos y que ahora muestre los productos junto a sus categorías y sus reviews
+    - Actualizar el endpoint de traer producto por id y que ahora muestre los productos junto a sus categorías y sus reviews
+
+
 ## Concepto e inspiración
+La idea inicial de este proyecto surge cuando dos par de frikis se juntan para realizar un backend. Cada uno de nosotros, uno enamorado de Valorant y otro amante de los animes, vimos claro que nuestro proyecto de backend debía pertenecer a nuestro campo. De ahí surgió la estructura inicial de nuestra tienda friki, en la que podremos encontrar cosas que nos apasionan a ambos.
 
 # Documentacion de API
 
