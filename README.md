@@ -414,7 +414,7 @@ Header:
 | authorization | Token |
 
 Body:
-```| KEY | VALUE |
+| KEY | VALUE |
 | --- | --- |
 | CategorieId | 1 |
 | SetId | 2 |
@@ -424,7 +424,7 @@ Body:
 | stock| 30 |
 | upload| 03.jpg |
 
-```
+
 
 Respuesta:
 ```JSON
@@ -542,9 +542,11 @@ Respuesta:
         }
     }
 ]
-´´´´
+````
 ---------------------
+
 # Ordenar productos por precio
+
 **(Público) GET** - `http://localhost:8080/products/order`
 Este endpoint te permite, de manera pública, acceder a los productos junto con su categoría y el set al que pertenecen pero esta vez mostrará los productos ordenados de mayor a menor precio.
 
@@ -667,8 +669,9 @@ Respuesta:
         "updatedAt": "2022-05-25T14:53:00.000Z"
     }
 }
-```
+````
 -----------------------
+## Borrar productos
 **(Admin) DELETE** - `http://localhost:8080/products/id/2` 
 
 Aquí además, en la ruta debemos añadir:
