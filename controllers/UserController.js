@@ -62,6 +62,17 @@ const UserController = {
             console.error(error);
         }
     },
+    async getInfo(req, res) {
+        try {
+
+            const user = await User.findByPk(req.user.id)
+
+            res.send(user)
+        } catch (error) {
+            res.status(500).send({ message: 'Ha habido un problema ' })
+            console.error(error)
+        }
+    },
     async update(req, res) {
         try {
             const user = await User.update({...req.body }, {
