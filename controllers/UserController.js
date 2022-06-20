@@ -9,18 +9,18 @@ const UserController = {
     async create(req, res, next) {
         try {
             req.body.role = "user"
-            req.body.confirmed = false
+                // req.body.confirmed = false
             const hashedPassword = await bcrypt.hashSync(req.body.password, 10)
             const user = await User.create({...req.body, password: hashedPassword });
-            const emailToken = await jwt.sign({ email: req.body.email }, jwt_secret, { expiresIn: '48h' })
-            const url = "http://localhost:8080/users/confirm/" + emailToken
-            await transporter.sendMail({
-                to: req.body.email,
-                subject: "Confirma tu registro",
-                html: `<h2>¡Hola ${user.username}!</h2>
-                <p>Para finalizar registro <a href=${url}>haz click aquí</a> UwU</p>
-                `
-            })
+            // const emailToken = await jwt.sign({ email: req.body.email }, jwt_secret, { expiresIn: '48h' })
+            // const url = "http://localhost:8080/users/confirm/" + emailToken
+            // await transporter.sendMail({
+            //     to: req.body.email,
+            //     subject: "Confirma tu registro",
+            //     html: `<h2>¡Hola ${user.username}!</h2>
+            //     <p>Para finalizar registro <a href=${url}>haz click aquí</a> UwU</p>
+            //     `
+            // })
             res.status(201).send({ message: 'Se ha creado un usuario', user })
         } catch (error) {
             error.origin = "User";
@@ -52,9 +52,9 @@ const UserController = {
             if (!isMatch) {
                 res.send('Email/contraseña incorrectos')
             }
-            if (!user.confirmed) {
-                res.send(200).send('No has verificado el usuario, revisa tu correo.')
-            }
+            // if (!user.confirmed) {
+            //     res.send(200).send('No has verificado el usuario, revisa tu correo.')
+            // }
             const token = jwt.sign({ id: user.id }, jwt_secret);
             Token.create({ token: token, UserId: user.id })
             res.send({ message: 'Eres un crack, fiera, mastodonte', user, token })
@@ -130,19 +130,19 @@ const UserController = {
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
     },
-    async validateUser(req, res) {
-        try {
-            const payload = jwt.verify(req.params.token, jwt_secret)
-            User.update({ confirmed: true }, {
-                where: {
-                    email: payload.email
-                }
-            })
-            res.status(201).send(`El usuario ha sido verificado ^^`)
-        } catch (error) {
-            res.status(404).send(`Enlace no valido`)
-        }
-    }
+    // async validateUser(req, res) {
+    //     try {
+    //         const payload = jwt.verify(req.params.token, jwt_secret)
+    //         User.update({ confirmed: true }, {
+    //             where: {
+    //                 email: payload.email
+    //             }
+    //         })
+    //         res.status(201).send(`El usuario ha sido verificado ^^`)
+    //     } catch (error) {
+    //         res.status(404).send(`Enlace no valido`)
+    //     }
+    // }
 }
 
 module.exports = UserController
