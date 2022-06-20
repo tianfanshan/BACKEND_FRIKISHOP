@@ -7,7 +7,7 @@ const CategorieController = {
             await Categorie.create({...req.body })
             res.status(201).send(`Se ha añadido ${req.body.name} a categorias`)
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.send('Algo ha salido mal...')
         }
     },
@@ -44,7 +44,7 @@ const CategorieController = {
                 await Categorie.findAll({ include: [Product] })
             )
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.send('Algo ha salido mal')
         }
     },
@@ -54,7 +54,7 @@ const CategorieController = {
                 await Categorie.findByPk(req.params.id, { include: [Product] })
             )
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.send('Algo ha salido mal')
         }
     },
@@ -70,7 +70,7 @@ const CategorieController = {
                 })
             )
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.send('Algo ha salido mal')
         }
     }

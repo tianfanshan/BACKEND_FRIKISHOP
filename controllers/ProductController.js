@@ -8,7 +8,7 @@ const ProductController = {
             const newProduct = await Product.create({...req.body, img: req.file.filename })
             res.status(201).send({ message: 'Se ha añadido el producto correctamente', newProduct })
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.send('Algo ha salido mal...')
         }
     },
@@ -19,7 +19,7 @@ const ProductController = {
             )
         } catch (error) {
 
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
     },
@@ -33,7 +33,7 @@ const ProductController = {
             const productUpdated = await Product.findByPk(req.params.id);
             res.send({ message: `Producto con id ${req.params.id} actualizado con éxito`, productUpdated });
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
 
@@ -52,7 +52,7 @@ const ProductController = {
             })
             res.send(`El producto con id ${req.params.id} junto con su review ha sido eliminado con éxito`)
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
 
@@ -63,7 +63,7 @@ const ProductController = {
                 await Product.findByPk(req.params.id, { include: [Categorie] })
             )
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
     },
@@ -78,7 +78,7 @@ const ProductController = {
                 include: [Categorie]
             }))
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
 
@@ -96,7 +96,7 @@ const ProductController = {
                 include: [Categorie]
             }))
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
     },
@@ -110,7 +110,7 @@ const ProductController = {
                 }, { include: [Categorie] })
             )
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
     }

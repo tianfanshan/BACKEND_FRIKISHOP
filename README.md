@@ -6,9 +6,9 @@
 
  - [Sobre el proyecto](#sobre-el-proyecto)
 
-    - [Instalacion y despliegue](#instalacion-y-despliegue)
+    - [Instalación y despliegue](#instalacion-y-despliegue)
 
-    - [Tecnologias utilizadas](#tecnologias-utilizadas)
+    - [Tecnologías utilizadas](#tecnologias-utilizadas)
 
     - [Origen](#origen)
 
@@ -46,7 +46,7 @@
 
 
 
-## :bar_chart: Instalacion y despliegue 
+## :bar_chart: Instalación y despliegue 
 Para el desarrollo de esta API utilizaremos mysql con Sequelize y express mediante Node.
 El proyecto se subirá a un repositorio público de GitHub.
 Para instalar este proyecto debes hacer lo siguiente: primero acceder desde github al repositorio y proceder a clonártelo con el siguiente comando:
@@ -63,7 +63,7 @@ npm install sequelize-cli -g
 ````
 
 Seguidamente, dentro de la carpeta config, debes crearte un archivo llamado "config.json" con la siguiente información:
-`````
+```JSON
 {
     "development": {
         "username": "Your user", // Aquí introducir tu usuario de mysql 
@@ -79,7 +79,22 @@ Seguidamente, dentro de la carpeta config, debes crearte un archivo llamado "con
     },
     ...
 }
-``````
+```
+
+Una vez configurada la base de datos hay que crearla con sus seeds (Relleno de prueba). Para ello ejecuta las siguientes lineas de comandos en la raíz del proyecto:
+
+```
+sequelize db:create
+
+sequelize db:migrate
+
+sequelize db:seed:all
+```
+
+Por último, procede a levantar el servidor con este comando:
+```
+npm start
+```
 
 ## :nut_and_bolt: Tecnologias/packages utilizados 
 - Javascript
@@ -94,16 +109,16 @@ Seguidamente, dentro de la carpeta config, debes crearte un archivo llamado "con
 - Postman
 
 ## :dart: Origen 
-Es un proyecto de backend de la academia The Brigde para asentar conocimientos en todo el terreno de base de datos mysql conjuntamente con Node+Express y Sequelize. Ha consistido en desarrollar una tienda que, en nuestro caso, posee una temática friki, de forma que tenemos tanto Categorías fisicas por un lado, como Sets dentro de esas categorías pertenecientes a diversos videojuegos, animes, etc.
+Es un proyecto de backend de la academia The Brigde para asentar conocimientos en todo el terreno de base de datos mysql conjuntamente con Node+Express y Sequelize. Ha consistido en desarrollar una tienda que, en nuestro caso, posee una temática friki, de forma que tenemos tanto Categorías físicas por un lado, como Sets dentro de esas categorías pertenecientes a diversos videojuegos, animes, etc.
 
 
-Además de la utilización de estas tecnologías, hemos trabajo en equipo mediante la utilización de diversas ramas de Git. Primeramente se ha creado la rama develop y desde ahí hemos ido diversificando en varias subramas según qué finalidad tuviese cada nueva aportación. El objetivo final es trabajar conjuntamente desde develop, mergeando ramas según se avance y teniendo en cuenta el trabajo del compañero. Finalmente, cuando se prueba el proyecto entero desde develop y se comprueba que todo funciona y está correcto, se acaba añadiendo a la rama main.
+Además de la utilización de estas tecnologías, hemos trabajo en equipo mediante el uso de diversas ramas de Git. Primeramente se ha creado la rama develop y desde ahí hemos ido diversificando en varias subramas según qué finalidad tuviese cada nueva aportación. El objetivo final es trabajar conjuntamente desde develop, mergeando ramas según se avance y teniendo en cuenta el trabajo del compañero. Finalmente, cuando se prueba el proyecto entero desde develop, se comprueba que todo funciona y. si es el caso, se acaba añadiendo a la rama main.
 
 
 Este es el diagrama que hemos confeccionado para realizar nuestra base de datos de la tienda:
 ![foto](/toReadme/schema_png.png)
 
-Para organizar el trabajo, hemos hecho uso de Trello para dividir las tareas y tener un planteamiento más tangible de las diferentes fases del proyecto.
+Para organizar el trabajo, hemos hecho uso de Trello para dividir las tareas y tener un planteamiento más tangible de las diferentes fases del proyecto:
 ![foto](/toReadme/trello.png)
 
  
@@ -185,7 +200,7 @@ Hemos utilizado Postman para ir probando cada uno de los endpoints creados para 
 
 **(Publico) POST** - `http://localhost:8080/users/` 
 
-Endopoint que sirve para introducir un usuario en la BBDD, automaticamente se le asigna el rol de usuario, la contraseña se guarda codificada para que no sea accesible y el usuario queda pendiente de confirmacion via mail. Este procedimiento anida diversas verificaciones para que se introduzcan datos correctos. Los parametros de entrada son via Body.
+Endopoint que sirve para introducir un usuario en la BBDD, automáticamente se le asigna el rol de usuario, la contraseña se guarda codificada para que no sea accesible y el usuario queda pendiente de confirmación via mail. Este procedimiento anida diversas verificaciones para que se introduzcan datos correctos. Los parámetros de entrada son vía Body.
 
 Body:
 ```JSON
@@ -221,7 +236,7 @@ Respuesta:
 
 **(Registrado) GET** - `http://localhost:8080/users/login` 
 
-Endpoint que sirve para iniciar sesión, esto genera un token de sesión, las credenciales se introducen via Body.
+Endpoint que sirve para iniciar sesión, esto genera un token de sesión, las credenciales se introducen vía Body.
 
 Body:
 ```JSON
@@ -256,7 +271,7 @@ Respuesta:
 
 **(Registrado) DELETE** - `http://localhost:8080/users/logout` 
 
-Endpoint que sirve para cerrar sesión de un usuario activo
+Endpoint que sirve para cerrar sesión de un usuario activo.
 
 Header:
 
@@ -277,7 +292,7 @@ Respuesta:
 
 **(Registrado) PUT** - `http://localhost:8080/users/`
 
-Endpoint que sirve para para modificar los datos de usuarios, para su funcionamiento es necesario que se le pase en el body los datos a modificar y en el header el token activo.
+Endpoint que sirve para para modificar los datos de usuarios. Para su funcionamiento es necesario que se le pase en el body los datos a modificar y en el header el token activo.
 
 Body:
 ```JSON
@@ -317,7 +332,7 @@ Resultado:
 
 **(Admin) GET** - `http://localhost:8080/users/`
 
-Endpoint con el que se obtiene a todos los usuarios con sus pedidos, solo es necesario un token en el header con rol de Admin
+Endpoint con el que se obtiene a todos los usuarios con sus pedidos, solo es necesario un token en el header con rol de Admin.
 
 Header:
 
@@ -465,7 +480,7 @@ El usuario con id 2 (junto con su order y su review) ha sido eliminado con éxit
 
 **(Registrado) POST** - `http://localhost:8080/orders`
 
-Endpoint que sirve para hacer la creacion de un pedido, acepta un array para que se puedan añadir diversos productos al mismo pedido, es necesario usar un token en el header para identificar el dueño del pedido y un body con los detalles del pedido (id del producto a introducir y la cantidad del mismo). Por defecto el pedido se genera con `"paid": "false"` ya que inicialmente no ha sido pagado.
+Endpoint que sirve para hacer la creación de un pedido, acepta un array para que se puedan añadir diversos productos al mismo pedido. Es necesario usar un token en el header para identificar el dueño del pedido y un body con los detalles (id del producto a introducir y la cantidad del mismo). Por defecto el pedido se genera con `"paid": "false"` ya que inicialmente no ha sido pagado.
 
 ```JSON
 [
@@ -622,7 +637,11 @@ Aquí además, en la ruta debemos añadir:
 `````
 upload.single('upload'), 
 `````
-Esto nos permite usar el midleware Multer para poder adjuntar una imagen con cada producto. Este endpoint que sirve para crear un producto nuevo, es necesario disponer de un token de admin y adjuntarlo en el head. Al usar Multer, es necesario poner la información dentro del Body, pero en form-data:
+de forma que en este caso se quedaría así:
+```
+router.post('/', authentication, isAdmin, upload.single('upload'), ProductController.create)
+````
+Esto nos permite usar el midleware Multer para poder adjuntar una imagen con cada producto. En este endpoint que sirve para crear un producto nuevo, es necesario disponer de un token de admin y adjuntarlo en el head. Al usar Multer, es necesario poner la información dentro del Body, pero en form-data:
 
 Header:
 
@@ -816,7 +835,7 @@ Respuesta:
 --------------------------
 ## Filtrar productos entre un rango de precio determinado
 **(Público) GET** - `http://localhost:8080/products/filter/pricemin/1/pricemax/5`
-Este endpoint te permite, de manera pública, acceder a los productos junto con su categoría y el set al que pertenecen filtrados según un mínimo y máximo de precio que estipulas en la url.
+Este endpoint te permite, de manera pública, acceder a los productos junto con su categoría y el set al que pertenecen filtrados según un mínimo y máximo de precio que estipulas en la url, recogidos mediante dos parámetros :min y :max.
 
 Respuesta:
 
@@ -916,7 +935,11 @@ Aquí además, en la ruta debemos añadir:
 `````
 upload.single('upload'), 
 `````
-Esto nos permite usar el midleware Multer para poder adjuntar una imagen con cada producto. Este endpoint que sirve para modificar un producto, es necesario disponer de un token de admin y adjuntarlo en el head. Al usar Multer, es necesario poner la información dentro del Body, pero en form-data:
+de forma que se nos quedaría así:
+````
+router.put('/id/:id', authentication, isAdmin, upload.single('upload'), ProductController.update)
+````
+Esto nos permite usar el midleware Multer para poder adjuntar una imagen con cada producto. En este endpoint que sirve para modificar un producto, es necesario disponer de un token de admin y adjuntarlo en el head. Al usar Multer, es necesario poner la información dentro del Body, pero en form-data, al igual que cuando creábamos un producto:
 
 Header:
 
@@ -962,7 +985,7 @@ Respuesta:
 
 **(Admin) POST** - `http://localhost:8080/categories` 
 
-Este endpoint nos permite crear diferentes categorías, siempre que tengas el rango de autorización requerido.
+Este endpoint nos permite crear diferentes categorías, siempre que tengas el rango de autorización requerido (admin).
 
 Header:
 
@@ -1152,7 +1175,7 @@ Respuesta:
 
 **(Admin) POST** - `http://localhost:8080/categories/id/2` 
 
- Este endpoint que sirve para modificar una categoría, es necesario disponer de un token de admin y adjuntarlo en el head. 
+ En este endpoint que sirve para modificar una categoría, es necesario disponer de un token de admin y adjuntarlo en el head. 
 
 Header:
 
@@ -1184,7 +1207,7 @@ Respuesta:
 
 **(Admin) DELETE** - `http://localhost:8080/categories/id/2` 
 
-Endpoint para borrar categoría por Id. Necesitas tener permisos, por lo que debes rellenar el header con lo siguiente:
+Endpoint para borrar categoría por Id. Necesitas tener permisos admin, por lo que debes rellenar el header con lo siguiente:
 
 Header:
 
@@ -1207,7 +1230,7 @@ Se ha borrado la categoria con id: 2
 
 **(Admin) POST** - `http://localhost:8080/sets2` 
 
-Endpoint para crear un set nuevo. Necesitas tener permisos, por lo que debes rellenar el header con lo siguiente:
+Endpoint para crear un set nuevo. Necesitas tener permisos, por lo que debes rellenar el header con:
 
 Header:
 
@@ -1315,7 +1338,7 @@ Respuesta:
 
 **(Publico) POST** - `http://localhost:8080/reviews/review_product/id/:id` 
 
-Endpoint que te devuelve un producto concreto junto a su categoria y las reseñas que tienen. Para usar este endpoint solo es necesario pasar por la URL el id del producto del que quieres obtener la informacion
+Endpoint que te devuelve un producto concreto junto a su categoría y las reseñas que tienen. Para usar este endpoint solo es necesario pasar por la URL el id del producto del que quieres obtener la información.
 
 ```JSON
 {
@@ -1356,7 +1379,7 @@ Endpoint que te devuelve un producto concreto junto a su categoria y las reseña
 
 **(Registrado) POST** - `http://localhost:8080/reviews` 
 
-Endpoint que consiste en la publicacion de una reseña, esto acepta un parametro por el header que es el token del usuario que va a generar la reseña, y por el body el resto de parametros.
+Endpoint que consiste en la publicación de una reseña, esto acepta un parámetro por el header que es el token del usuario que va a generar la reseña, y por el body el resto de parámetros.
 
 Header:
 | KEY | VALUE |
@@ -1395,7 +1418,7 @@ Respuesta:
 
 **(Registrado) PUT** - `http://localhost:8080/reviews/id/:id` 
 
-Endpoint que sirve para modificar una reseña, para su ejecucion, es necesario pasar por le URL el id de la reseña, hay que incluir en el header el token del dueño de la reseña a modificar, por ultimo dentro del body hay que introducir los campos a modificar de la reseña.
+Endpoint que sirve para modificar una reseña. Para su ejecución, es necesario pasar por le URL el id de la reseña, hay que incluir en el header el token del dueño de la reseña a modificar, por último dentro del body hay que introducir los campos que queramos modificar.
 
 Header:
 | KEY | VALUE |

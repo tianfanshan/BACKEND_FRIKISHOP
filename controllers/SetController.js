@@ -7,21 +7,11 @@ const SetController = {
             const newSet = await Set.create({...req.body })
             res.status(201).send({ message: 'Se ha añadido el Set correctamente', newSet })
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.send('Algo ha salido mal...')
         }
     },
-    // async findAll(req, res) {
-    //     try {
-    //         res.send(
-    //             await Set.findAll({ include: [Categorie] })
-    //         )
-    //     } catch (error) {
 
-    //         console.log(error)
-    //         res.status(500).send({ message: 'Ha habido un problema ' })
-    //     }
-    // },
     async update(req, res) {
         try {
             await Set.update({...req.body }, {
@@ -32,7 +22,7 @@ const SetController = {
             const SetUpdated = await Set.findByPk(req.params.id);
             res.send({ message: `Set con id ${req.params.id} actualizado con éxito`, SetUpdated });
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
 
@@ -47,21 +37,12 @@ const SetController = {
 
             res.send(`El Set con id ${req.params.id} ha sido eliminado con éxito`)
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
 
     },
-    // async getById(req, res) {
-    //     try {
-    //         res.send(
-    //             await Set.findByPk(req.params.id, { include: [Categorie] })
-    //         )
-    //     } catch (error) {
-    //         console.log(error)
-    //         res.status(500).send({ message: 'Ha habido un problema ' })
-    //     }
-    // },
+
     async getOneByName(req, res) {
         try {
             res.send(await Set.findAll({
@@ -70,10 +51,10 @@ const SetController = {
                         [Op.like]: `%${req.params.name}%`
                     }
                 },
-                // include: [Categorie]
+
             }))
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
 
@@ -91,7 +72,7 @@ const SetController = {
                 include: [Categorie]
             }))
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
     },
@@ -105,7 +86,7 @@ const SetController = {
                 }, { include: [Categorie] })
             )
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
     }

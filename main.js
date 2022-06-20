@@ -3,7 +3,10 @@ const { typeError } = require('./middelware/errors');
 const app = express();
 const port = 8080;
 
+const cors = require('cors')
 
+
+app.use(cors())
 app.use(express.json());
 
 app.use('/users', require('./routes/users'));

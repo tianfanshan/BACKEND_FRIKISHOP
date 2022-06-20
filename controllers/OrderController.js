@@ -11,7 +11,7 @@ const OrderController = {
             });
             res.status(201).send('Se ha creado el pedido correctamente')
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.send('Algo ha salido mal...')
         }
     },
@@ -25,7 +25,7 @@ const OrderController = {
                 })
             );
         } catch (error) {
-            console.log(error);
+            console.error(error);
             res.send('Algo ha salido mal...')
         }
     },
@@ -39,7 +39,7 @@ const OrderController = {
                 })
             )
         } catch (error) {
-            console.log(error)
+            console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
         }
     },
