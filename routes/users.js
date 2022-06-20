@@ -5,6 +5,8 @@ const { authentication, isAdmin } = require('../middelware/authentication')
 
 router.post('/', UserController.create)
 router.post('/login', UserController.login)
+
+router.get('/myInfo', authentication, UserController.getInfo)
 router.put('/', authentication, UserController.update)
 router.delete('/id/:id', authentication, isAdmin, UserController.delete)
 router.get('/', authentication, isAdmin, UserController.findAll)
