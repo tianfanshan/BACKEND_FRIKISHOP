@@ -4,7 +4,7 @@ const app = express();
 const port = 8080;
 
 const cors = require('cors')
-
+app.use(express.static('uploads'))
 
 app.use(cors())
 app.use(express.json());
