@@ -67,7 +67,7 @@ const UserController = {
     async getInfo(req, res) {
         try {
 
-            const user = await User.findByPk(req.user.id)
+            const user = await User.findByPk(req.user.id,{ include: [{ model: Order, include: [{ model: Product }] }] })
 
             res.send(user)
         } catch (error) {
