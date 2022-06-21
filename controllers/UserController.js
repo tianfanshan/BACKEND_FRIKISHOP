@@ -10,6 +10,8 @@ const UserController = {
         try {
             req.body.role = "user"
                 // req.body.confirmed = false
+                if (req.file) req.body.img = req.file.filename
+                
             const hashedPassword = await bcrypt.hashSync(req.body.password, 10)
             const user = await User.create({...req.body, password: hashedPassword });
             // const emailToken = await jwt.sign({ email: req.body.email }, jwt_secret, { expiresIn: '48h' })

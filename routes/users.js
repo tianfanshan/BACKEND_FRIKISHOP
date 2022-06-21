@@ -2,8 +2,10 @@ const express = require('express');
 const UserController = require('../controllers/UserController');
 const router = express.Router();
 const { authentication, isAdmin } = require('../middelware/authentication')
+const { uploadUserAvatar } = require('../middelware/imgsource');
 
-router.post('/', UserController.create)
+
+router.post('/',uploadUserAvatar.single('upload'), UserController.create)
 router.post('/login', UserController.login)
 
 router.get('/myInfo', authentication, UserController.getInfo)
