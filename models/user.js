@@ -45,7 +45,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         adress: DataTypes.STRING,
         role: DataTypes.STRING,
-        confirmed: DataTypes.BOOLEAN
+        confirmed: DataTypes.BOOLEAN,
+        img: DataTypes.STRING
     }, {
         sequelize,
         modelName: 'User',
