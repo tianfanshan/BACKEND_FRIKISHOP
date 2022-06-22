@@ -5,11 +5,12 @@ const { Op } = Sequelize;
 const ProductController = {
     async create(req, res) {
         try {
-            const newProduct = await Product.create({...req.body, img: req.file.filename })
+            if (req.file) req.body.img = req.file.filename
+            const newProduct = await Product.create({...req.body})
             res.status(201).send({ message: 'Se ha añadido el producto correctamente', newProduct })
         } catch (error) {
             console.error(error);
-            res.send('Algo ha salido mal...')
+            res.status(500).send('Algo ha salido mal...')
         }
     },
     async findAll(req, res) {
