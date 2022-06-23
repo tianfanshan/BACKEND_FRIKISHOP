@@ -26,7 +26,8 @@ const ProductController = {
     },
     async update(req, res) {
         try {
-            await Product.update({...req.body, img: req.file.filename }, {
+            if (req.file) req.body.img = req.file.filename
+            await Product.update({...req.body }, {
                 where: {
                     id: req.params.id
                 }
@@ -51,7 +52,7 @@ const ProductController = {
                     ProductId: req.params.id
                 }
             })
-            res.send(`El producto con id ${req.params.id} junto con su review ha sido eliminado con éxito`)
+            res.status(400).send({message:`El producto con id ${req.params.id} junto con su review ha sido eliminado con éxito`,el:req.params.id})
         } catch (error) {
             console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
