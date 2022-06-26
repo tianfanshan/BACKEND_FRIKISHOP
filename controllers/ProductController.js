@@ -52,7 +52,7 @@ const ProductController = {
                     ProductId: req.params.id
                 }
             })
-            res.status(400).send({message:`El producto con id ${req.params.id} junto con su review ha sido eliminado con éxito`,el:req.params.id})
+            res.status(200).send({message:`El producto con id ${req.params.id} junto con su review ha sido eliminado con éxito`,el:req.params.id})
         } catch (error) {
             console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
