@@ -33,7 +33,7 @@ const ProductController = {
                 }
             })
             const productUpdated = await Product.findByPk(req.params.id);
-            res.send({ message: `Producto con id ${req.params.id} actualizado con éxito`, productUpdated });
+            res.status(201).send({ message: `Producto con id ${req.params.id} actualizado con éxito`, productUpdated });
         } catch (error) {
             console.error(error)
             res.status(500).send({ message: 'Ha habido un problema ' })
@@ -61,7 +61,7 @@ const ProductController = {
     },
     async getById(req, res) {
         try {
-            res.send(
+            res.status(200).send(
                 await Product.findByPk(req.params.id, { include: [Categorie] })
             )
         } catch (error) {
@@ -71,7 +71,7 @@ const ProductController = {
     },
     async getOneByName(req, res) {
         try {
-            res.send(await Product.findAll({
+            res.status(200).send(await Product.findAll({
                 where: {
                     name: {
                         [Op.like]: `%${req.params.name}%`
@@ -87,7 +87,7 @@ const ProductController = {
     },
     async filterByPrice(req, res) {
         try {
-            res.send(await Product.findAll({
+            res.status(200).send(await Product.findAll({
                 limit: 200,
                 where: {
                     price: {
@@ -104,7 +104,7 @@ const ProductController = {
     },
     async orderPrice(req, res) {
         try {
-            res.send(
+            res.status(200).send(
                 await Product.findAll({
                     order: [
                         ['price', 'DESC']
