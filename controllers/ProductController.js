@@ -15,7 +15,7 @@ const ProductController = {
     },
     async findAll(req, res) {
         try {
-            res.send(
+            res.status(200).send(
                 await Product.findAll({ include: [Categorie] })
             )
         } catch (error) {
